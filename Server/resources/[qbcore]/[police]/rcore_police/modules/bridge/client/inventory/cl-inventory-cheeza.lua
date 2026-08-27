@@ -8,8 +8,21 @@
 
 
 
+local function shouldUseCheezaInventory()
+    if Config.Inventory ~= Inventory.CHEEZA then
+        return false
+    end
+
+    if isResourcePresentProvideless(Inventory.OX) then
+        Config.Inventory = Inventory.OX
+        return false
+    end
+
+    return true
+end
+
 CreateThread(function()
-    if Config.Inventory == Inventory.CHEEZA then
+    if shouldUseCheezaInventory() then
         NetworkService.RegisterNetEvent('HandleInventoryState', function(validRequest, state)
             if validRequest then
                 exports.inventory:LockInv(state)

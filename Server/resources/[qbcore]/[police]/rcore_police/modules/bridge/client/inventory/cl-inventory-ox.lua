@@ -8,8 +8,21 @@
 
 
 
-CreateThread(function()
+local function shouldUseOxInventory()
     if Config.Inventory == Inventory.OX then
+        return true
+    end
+
+    if Config.Inventory == Inventory.CHEEZA and isResourcePresentProvideless(Inventory.OX) then
+        Config.Inventory = Inventory.OX
+        return true
+    end
+
+    return false
+end
+
+CreateThread(function()
+    if shouldUseOxInventory() then
         NetworkService.RegisterNetEvent('FallBackOpenInventory', function(validRequest, targetPlayerId)
             if validRequest then
                 if not targetPlayerId then

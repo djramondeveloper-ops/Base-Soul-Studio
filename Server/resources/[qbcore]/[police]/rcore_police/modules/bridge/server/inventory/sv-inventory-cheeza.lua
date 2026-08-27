@@ -40,8 +40,21 @@ local ESX_ITEMS_DEPLOY = {
         weight = 50,
     },
 }
+local function shouldUseCheezaInventory()
+    if Config.Inventory ~= Inventory.CHEEZA then
+        return false
+    end
+
+    if isResourcePresentProvideless(Inventory.OX) then
+        Config.Inventory = Inventory.OX
+        return false
+    end
+
+    return true
+end
+
 CreateThread(function()
-    if Config.Inventory == Inventory.CHEEZA then
+    if shouldUseCheezaInventory() then
         RegisterNetEvent('rcore_police:server:requestPlayerInventory', function(targetPlayerId)
             local playerId = source
             local state, playerData = GroupsService.IsPlayerMemberOfGroup(playerId)
@@ -156,7 +169,16 @@ CreateThread(function()
             if not Framework.object then
                 return
             end
-            Framework.object.RegisterUsableItem(itemName, function(source)
+
+            local registerUsableItem = Framework.object.RegisterUsableItem
+            if type(registerUsableItem) ~= "function" and Framework.object.Functions then
+                registerUsableItem = Framework.object.Functions.CreateUseableItem
+            end
+            if type(registerUsableItem) ~= "function" then
+                return
+            end
+
+            registerUsableItem(itemName, function(source)
                 if UseableItemsCooldowns[source] then
                     return
                 end

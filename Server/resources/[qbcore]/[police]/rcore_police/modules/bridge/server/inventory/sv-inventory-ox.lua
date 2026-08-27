@@ -88,8 +88,22 @@ local OX_INVENTORY_ITEMS_DEPLOY = {
     },
 }
 local cachedItems = nil
-CreateThread(function()
+
+local function shouldUseOxInventory()
     if Config.Inventory == Inventory.OX then
+        return true
+    end
+
+    if Config.Inventory == Inventory.CHEEZA and isResourcePresentProvideless(Inventory.OX) then
+        Config.Inventory = Inventory.OX
+        return true
+    end
+
+    return false
+end
+
+CreateThread(function()
+    if shouldUseOxInventory() then
         InventoryService.RunTestStash = function(playerId)
             local lockerId = "admin_test_stash"
             local label = "Admin test stash"

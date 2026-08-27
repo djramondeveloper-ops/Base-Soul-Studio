@@ -77,7 +77,12 @@ Os itens devem existir no `ox_inventory` e na tabela de itens da Seoul/vRP quand
 
 ## Permissoes / grupos / jobs usados
 
-A base usa o grupo/job policial `Police`.
+A Seoul Base possui os jobs/departamentos `LSPD` e `PRPD`. O grupo `Police` existe no vRP como grupo agregador com permissao para `LSPD` e `PRPD`.
+
+No `rcore_police`, os departamentos ativos em `Config.JobGroups` sao:
+
+- `LSPD`
+- `PRPD`
 
 ## Comandos disponiveis
 
@@ -117,7 +122,8 @@ Os tempos do sistema continuam nos arquivos originais do `rcore_police`, princip
 2. O config define `Inventory.OX`.
 3. O loader valida bridges.
 4. A bridge correta de inventario deve ser `ox_inventory`.
-5. Os itens usaveis sao registrados pela bridge OX usando evento `ox_inventory:usedItem`.
+5. Se a base tambem possuir um resource chamado `inventory`, o bridge Cheeza e ignorado quando `ox_inventory` estiver presente.
+6. Os itens usaveis sao registrados pela bridge OX usando evento `ox_inventory:usedItem`.
 
 ## Como testar
 
@@ -147,7 +153,7 @@ Nao deve aparecer erro da bridge `sv-inventory-cheeza.lua`.
 
 ## Erros comuns e como resolver
 
-- Se voltar a aparecer `sv-inventory-cheeza.lua`, algum arquivo esta forçando `Config.Inventory = Inventory.CHEEZA` ou o resource executado nao e esta copia.
+- Se voltar a aparecer `sv-inventory-cheeza.lua`, algum arquivo esta forcando `Config.Inventory = Inventory.CHEEZA` ou o resource executado nao e esta copia.
 - Se item policial nao funcionar, confira se ele existe no `ox_inventory/data/items.lua`.
 - Se o resource reclamar de SQL, importe `rcore_police_seoul.sql`.
 - Se o framework nao carregar, confira se `vrp` iniciou antes do `rcore_police`.
@@ -156,6 +162,10 @@ Nao deve aparecer erro da bridge `sv-inventory-cheeza.lua`.
 
 - `modules/bridge/sv-bridge.lua`
 - `modules/bridge/cl-bridge.lua`
+- `modules/bridge/server/inventory/sv-inventory-cheeza.lua`
+- `modules/bridge/server/inventory/sv-inventory-ox.lua`
+- `modules/bridge/client/inventory/cl-inventory-cheeza.lua`
+- `modules/bridge/client/inventory/cl-inventory-ox.lua`
 - `README.md`
 
 ## Observacoes finais
