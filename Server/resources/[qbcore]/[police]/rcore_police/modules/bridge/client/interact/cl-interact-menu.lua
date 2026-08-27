@@ -234,6 +234,19 @@ OpenMainMenu = function()
     UI:CreateMenu(MENU_ID_LIST.MAIN_MENU, _U('JOB_MENU.MENU_TITLE'), array, true)
 end
 RegisterKey(OpenMainMenu, 'RCORE_POLICE_JOB_MENU', _U("KEY_MAPPING.JOB_MENU"), Config.JobMenuKey)
+RegisterCommand('policemenu', function()
+    OpenMainMenu()
+end, false)
+
+CreateThread(function()
+    while true do
+        Wait(0)
+        if IsControlJustReleased(0, 167) then -- F6
+            OpenMainMenu()
+        end
+    end
+end)
+
 AddEventHandler('rcore_police:client:openJobMenu', function()
     OpenMainMenu()
 end)

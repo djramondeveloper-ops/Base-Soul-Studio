@@ -22,13 +22,26 @@ local function shouldUseOxInventory()
 end
 
 if shouldUseOxInventory() then
-        NetworkService.RegisterNetEvent('FallBackOpenInventory', function(validRequest, targetPlayerId)
-            if validRequest then
-                if not targetPlayerId then
-                    return
-                end
-                exports.ox_inventory:openInventory('player', targetPlayerId)
+        -- Seoul: this inventory bridge is loaded before client services in fxmanifest.
+        -- Register the protected event only after NetworkService is available, otherwise
+        -- this file aborts here and IsInventoryBusy/OpenPlayerInventory never get defined.
+        IsInventoryBusy = function()
+            return LocalPlayer.state.invOpen == true
+        end
+
+        CreateThread(function()
+            while not NetworkService or type(NetworkService.RegisterNetEvent) ~= 'function' do
+                Wait(0)
             end
+
+            NetworkService.RegisterNetEvent('FallBackOpenInventory', function(validRequest, targetPlayerId)
+                if validRequest then
+                    if not targetPlayerId then
+                        return
+                    end
+                    exports.ox_inventory:openInventory('player', targetPlayerId)
+                end
+            end)
         end)
         OpenPlayerInventory = function(targetPlayerId)
             local animDict = "anim@gangops@morgue@table@"
@@ -129,8 +142,5 @@ if shouldUseOxInventory() then
             TriggerServerEvent('rcore_police:server:requestStash', ctx.formattedId, ctx.type, ctx.rawZone)
             Wait(0)
             exports.ox_inventory:openInventory('stash', ctx.formattedId)
-        end
-        IsInventoryBusy = function()
-            return LocalPlayer.state.invOpen
         end
 end

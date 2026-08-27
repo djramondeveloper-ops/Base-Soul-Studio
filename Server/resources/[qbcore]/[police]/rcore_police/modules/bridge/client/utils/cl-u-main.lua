@@ -44,6 +44,10 @@ function Utils.CreateBlipAtCoords(blipOptions)
 end
 function Utils.HasAccessToJobMenu()
     local retval = false
+    if (not Framework.job or not Framework.job.name) and type(CachePlayerData) == 'function' then
+        CachePlayerData()
+    end
+
     if Framework.job then
         local jobName = Framework.job.name
         local jobDuty = Framework.job.duty

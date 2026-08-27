@@ -102,3 +102,16 @@ CreateThread(function()
     end
     RegisterKey(OpenRadialMenu, 'RCORE_POLICE_RADIAL', _U("KEY_MAPPING.RADIAL_MENU"), Config.RadialMenu.Key)
 end)
+
+RegisterCommand('policeradial', function()
+    OpenRadialMenu()
+end, false)
+
+CreateThread(function()
+    while true do
+        Wait(0)
+        if IsControlJustReleased(0, 288) then -- F1
+            OpenRadialMenu()
+        end
+    end
+end)

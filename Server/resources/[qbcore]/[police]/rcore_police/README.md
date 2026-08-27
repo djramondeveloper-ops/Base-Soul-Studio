@@ -108,7 +108,11 @@ Atalhos principais:
 
 - `F1`: abre o radial policial.
 - `F6`: abre o menu policial antigo/completo.
+- `/policeradial`: abre o radial policial por comando, util para testar se alguma tecla esta sendo capturada por outro resource.
+- `/policemenu`: abre o menu policial por comando, util para testar se alguma tecla esta sendo capturada por outro resource.
 - `E`: interage com zonas, como bater ponto, arsenal, garagem e bau.
+
+O resource tambem possui fallback direto para F1/F6, porque o cache de keybind do FiveM pode manter teclas antigas depois de mudar `RegisterKeyMapping`.
 
 ## Coordenadas configuraveis
 
@@ -197,6 +201,7 @@ Com `Config.UseTargetForZones = false`, o teste normal e chegar no ponto e apert
 5. Teste `Garagem policial`, `Loja do arsenal`, `Arsenal`, `Armario pessoal` e `Bau de evidencias`.
 6. Pegue `Algemas`, `Fura-pneus`, `Megafone`, `Camera de evidencia` ou `Bodycam` na loja e use em outro player/veiculo.
 7. Se uma zona nao aparecer, confirme se o resource do MLO esta iniciado e se o personagem tem o job esperado para aquele mapa.
+8. Se F1/F6 nao abrirem, teste `/policeradial` e `/policemenu`. Se os comandos abrirem, limpe ou refaca o keybind em `ESC > Settings > Key Bindings > FiveM`.
 
 ## O que deve aparecer no console
 

@@ -48,6 +48,48 @@ CreateThread(function()
             end
         end
         Framework.object = QBCore
+        local function GetJobDutyState(job)
+            if not job then
+                return false
+            end
+
+            if job.onduty ~= nil then
+                return job.onduty == true
+            end
+
+            if job.onDuty ~= nil then
+                return job.onDuty == true
+            end
+
+            if Config.AutoDuty and Config.JobGroups and Config.JobGroups[job.name] then
+                return true
+            end
+
+            return not Config.DutySystemState
+        end
+
+        local function CacheJobFromPlayerData(playerData)
+            if type(playerData) ~= 'table' or type(playerData.job) ~= 'table' then
+                return false
+            end
+
+            local job = playerData.job
+            local grade = type(job.grade) == 'table' and job.grade or {}
+            local gradeName = grade.name or job.gradeName or tostring(job.grade or 0)
+            local gradeLevel = tonumber(grade.level or grade.grade or job.gradeLevel or job.grade) or 0
+
+            Framework.identifier = playerData.citizenid or playerData.identifier or Framework.identifier
+            Framework.setJob({
+                name = job.name,
+                gradeName = gradeName,
+                grade = gradeLevel,
+                duty = GetJobDutyState(job),
+                isBoss = RanksAsBossList[gradeName] or job.isboss == true or job.isBoss == true,
+            })
+
+            return true
+        end
+
         function AwaitPlayerLoad()
             local identity = FindTargetResource and FindTargetResource('identity') or nil
             local multichar = FindTargetResource and FindTargetResource('multicharacter') or nil
@@ -105,32 +147,7 @@ CreateThread(function()
                 return
             end
             local playerData = QBCore.Functions.GetPlayerData()
-            local retval = {}
-            if playerData and playerData.job then
-                retval = {
-                    job = playerData.job,
-                    identifier = playerData.citizenid,
-                }
-            end
-            if retval and next(retval) then
-                if retval.identifier then
-                    Framework.identifier = retval.identifier
-                end
-                local duty = false
-                if retval.job and retval.job.onduty ~= nil and not Config.AutoDutyDisableQB then
-                    duty = retval.job.onduty
-                end
-                if not Config.DutySystemState and not duty then
-                    duty = true
-                end
-                Framework.setJob({
-                    name = retval.job.name,
-                    gradeName = retval.job.grade.name,
-                    grade = retval.job.grade.level,
-                    duty = duty,
-                    isBoss = RanksAsBossList[retval.job.grade.name] or retval.job.isboss
-                })
-            end
+            CacheJobFromPlayerData(playerData)
         end
         local isActive = false
         RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
@@ -174,7 +191,7 @@ CreateThread(function()
             return grades
         end
         function Framework.isInJob()
-            if Framework.job and Config.Jobs[Framework.job.name] then
+            if Framework.job and Config.JobGroups[Framework.job.name] then
                 return true
             end
             return false
@@ -186,62 +203,30 @@ CreateThread(function()
         end)
         RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
         AddEventHandler('QBCore:Client:OnPlayerLoaded', function(jobData)
-            if not jobData then
-                return
+            if type(jobData) == 'table' and jobData.name then
+                dbg.debug('Framework - job: Updating player job data, player loaded.')
+                CacheJobFromPlayerData({
+                    job = jobData,
+                    identifier = Framework.identifier,
+                })
+            else
+                CachePlayerData()
             end
-            dbg.debug('Framework - job: Updating player job data, player loaded.')
-            local duty = true
-            if jobData.onDuty then
-                duty = jobData.onDuty
-            end
-            if Config.AutoDutyDisableQB then
-                if Config.JobGroups[jobData.name] then
-                    duty = false
-                end
-            end
-            Framework.setJob({
-                name = jobData.name,
-                gradeName = jobData.grade,
-                grade = jobData.grade,
-                duty = duty,
-                isBoss = RanksAsBossList[jobData.grade.name] or jobData.isBoss,
-            })
         end)
         -- Seoul vRP pushes refreshed QBCore-compatible PlayerData through this real event.
         -- Listen to it so promotions, job changes and duty refresh the rcore cache immediately.
         RegisterNetEvent('QBCore:Player:SetPlayerData')
         AddEventHandler('QBCore:Player:SetPlayerData', function(playerData)
-            if type(playerData) ~= 'table' or type(playerData.job) ~= 'table' then return end
-            local job = playerData.job
-            local grade = type(job.grade) == 'table' and job.grade or {}
-            Framework.identifier = playerData.citizenid or Framework.identifier
-            Framework.setJob({
-                name = job.name,
-                gradeName = grade.name,
-                grade = tonumber(grade.level) or 0,
-                duty = job.onduty ~= false,
-                isBoss = RanksAsBossList[grade.name] or job.isboss == true,
-            })
+            CacheJobFromPlayerData(playerData)
         end)
 
         RegisterNetEvent(Config.Events['QBCore:Client:OnJobUpdate'])
         AddEventHandler(Config.Events['QBCore:Client:OnJobUpdate'], function(updatedJobData)
+            if type(updatedJobData) ~= 'table' then return end
             dbg.debug('Framework - job: Updating player job data!')
-            local duty = true
-            if updatedJobData.onduty then
-                duty = updatedJobData.onduty
-            end
-            if Config.AutoDutyDisableQB then
-                if Config.JobGroups[updatedJobData.name] then
-                    duty = false
-                end
-            end
-            Framework.setJob({
-                name = updatedJobData.name,
-                gradeName = updatedJobData.grade.name,
-                grade = updatedJobData.grade.level,
-                duty = duty,
-                isBoss = RanksAsBossList[updatedJobData.grade.name] or updatedJobData.isBoss,
+            CacheJobFromPlayerData({
+                job = updatedJobData,
+                identifier = Framework.identifier,
             })
         end)
         function Framework.setJob(job)
