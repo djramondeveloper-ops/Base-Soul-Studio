@@ -659,8 +659,6 @@ SeoulLegacyCashAliases = { dollars = "dollar", money = "dollar", cash = "dollar"
 
 
 
-
-
 -- SEOUL ADMINCONTROL THEME CORE START
 -- Gerado automaticamente pelo AdminControl. Não edite este bloco manualmente.
 do

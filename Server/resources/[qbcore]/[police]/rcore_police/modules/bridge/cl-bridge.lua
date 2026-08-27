@@ -60,10 +60,13 @@ end
 
 -- ============================================================
 --  INVENTORY VERSION RESOLUTION
---  Prefers CHEEZA over MF when both are loaded
+--  Seoul uses ox_inventory even when Creative inventory is present.
 -- ============================================================
 
 local function resolveInventory(current)
+    if current == Inventory.OX then return current end
+    if isResourcePresentProvideless(Inventory.OX) then return Inventory.OX end
+
     local resolved = nil
     if isResourcePresentProvideless(Inventory.CHEEZA) then resolved = Inventory.CHEEZA end
     if isResourcePresentProvideless(Inventory.MF)     then resolved = Inventory.MF     end
