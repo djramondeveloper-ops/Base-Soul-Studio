@@ -1,5 +1,4 @@
-CreateThread(function()
-    if Config.Prison ~= Prison.NONE then return end
+if Config.Prison == Prison.NONE then
 
     SentPlayerToCOMS = function(target)
         if not target or not isResourcePresentProvideless(Prison.ESX_COMS) then return end
@@ -65,4 +64,4 @@ CreateThread(function()
 
         dbg.critical('SentPlayerToPrison: lb-tablet nao esta iniciado e nenhum fallback de prisao confirmado esta disponivel.')
     end
-end)
+end

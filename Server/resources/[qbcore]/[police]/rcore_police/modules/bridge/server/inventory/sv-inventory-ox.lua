@@ -102,8 +102,7 @@ local function shouldUseOxInventory()
     return false
 end
 
-CreateThread(function()
-    if shouldUseOxInventory() then
+if shouldUseOxInventory() then
         InventoryService.RunTestStash = function(playerId)
             local lockerId = "admin_test_stash"
             local label = "Admin test stash"
@@ -305,5 +304,4 @@ CreateThread(function()
             dbg.info("Inventory state: Setting for %s (%s) to %s inventory - state: %s", GetPlayerName(playerId),
                 playerId, state and "disabling" or "enabling", state)
         end
-    end
-end)
+end

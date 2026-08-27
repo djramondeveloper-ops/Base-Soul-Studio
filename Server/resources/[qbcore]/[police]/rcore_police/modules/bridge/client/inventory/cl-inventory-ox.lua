@@ -21,8 +21,7 @@ local function shouldUseOxInventory()
     return false
 end
 
-CreateThread(function()
-    if shouldUseOxInventory() then
+if shouldUseOxInventory() then
         NetworkService.RegisterNetEvent('FallBackOpenInventory', function(validRequest, targetPlayerId)
             if validRequest then
                 if not targetPlayerId then
@@ -134,5 +133,4 @@ CreateThread(function()
         IsInventoryBusy = function()
             return LocalPlayer.state.invOpen
         end
-    end
-end)
+end

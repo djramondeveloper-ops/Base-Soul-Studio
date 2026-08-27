@@ -1,5 +1,4 @@
-CreateThread(function()
-    if Config.MDT ~= MDT.LB_TABLET then return end
+if Config.MDT == MDT.LB_TABLET then
 
     AddEventHandler('rcore_police:client:showMDT', function()
         if GetResourceState('lb-tablet') ~= 'started' then
@@ -13,4 +12,4 @@ CreateThread(function()
             Framework.sendNotification('Nao foi possivel abrir o LB Tablet.', 'error')
         end
     end)
-end)
+end

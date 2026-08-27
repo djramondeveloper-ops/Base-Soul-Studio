@@ -49,43 +49,43 @@ Config.Private.EMULATED_EVENTS = {
 Config.Private.FallbackWeapons = {
     recruit = {
         List = {
-            { label = "App Pistol",  weapon = "WEAPON_APPISTOL",   cost = 100 },
-            { label = "Nighstick",   weapon = "WEAPON_NIGHTSTICK",  cost = 0   },
-            { label = "Stungun",     weapon = "WEAPON_STUNGUN",     cost = 100 },
-            { label = "Flashlight",  weapon = "WEAPON_FLASHLIGHT",  cost = 80  },
+            { label = "Pistola AP",  weapon = "WEAPON_APPISTOL",   cost = 100 },
+            { label = "Cassetete",   weapon = "WEAPON_NIGHTSTICK",  cost = 0   },
+            { label = "Taser",       weapon = "WEAPON_STUNGUN",     cost = 100 },
+            { label = "Lanterna",    weapon = "WEAPON_FLASHLIGHT",  cost = 80  },
         },
     },
     officer = {
         List = {
-            { label = "App Pistol",  weapon = "WEAPON_APPISTOL",   cost = 100 },
-            { label = "Nighstick",   weapon = "WEAPON_NIGHTSTICK",  cost = 0   },
-            { label = "Stungun",     weapon = "WEAPON_STUNGUN",     cost = 100 },
-            { label = "Flashlight",  weapon = "WEAPON_FLASHLIGHT",  cost = 80  },
+            { label = "Pistola AP",  weapon = "WEAPON_APPISTOL",   cost = 100 },
+            { label = "Cassetete",   weapon = "WEAPON_NIGHTSTICK",  cost = 0   },
+            { label = "Taser",       weapon = "WEAPON_STUNGUN",     cost = 100 },
+            { label = "Lanterna",    weapon = "WEAPON_FLASHLIGHT",  cost = 80  },
         },
     },
     sergeant = {
         List = {
-            { label = "App Pistol",  weapon = "WEAPON_APPISTOL",   cost = 100 },
-            { label = "Nighstick",   weapon = "WEAPON_NIGHTSTICK",  cost = 0   },
-            { label = "Stungun",     weapon = "WEAPON_STUNGUN",     cost = 100 },
-            { label = "Flashlight",  weapon = "WEAPON_FLASHLIGHT",  cost = 80  },
+            { label = "Pistola AP",  weapon = "WEAPON_APPISTOL",   cost = 100 },
+            { label = "Cassetete",   weapon = "WEAPON_NIGHTSTICK",  cost = 0   },
+            { label = "Taser",       weapon = "WEAPON_STUNGUN",     cost = 100 },
+            { label = "Lanterna",    weapon = "WEAPON_FLASHLIGHT",  cost = 80  },
         },
     },
     lieutenant = {
         List = {
-            { label = "App Pistol",  weapon = "WEAPON_APPISTOL",   cost = 100 },
-            { label = "Nighstick",   weapon = "WEAPON_NIGHTSTICK",  cost = 0   },
-            { label = "Stungun",     weapon = "WEAPON_STUNGUN",     cost = 100 },
-            { label = "Flashlight",  weapon = "WEAPON_FLASHLIGHT",  cost = 80  },
+            { label = "Pistola AP",  weapon = "WEAPON_APPISTOL",   cost = 100 },
+            { label = "Cassetete",   weapon = "WEAPON_NIGHTSTICK",  cost = 0   },
+            { label = "Taser",       weapon = "WEAPON_STUNGUN",     cost = 100 },
+            { label = "Lanterna",    weapon = "WEAPON_FLASHLIGHT",  cost = 80  },
         },
     },
     boss = {
         List = {
-            { label = "App Pistol",   weapon = "WEAPON_APPISTOL",    cost = 100 },
-            { label = "Nighstick",    weapon = "WEAPON_NIGHTSTICK",   cost = 0   },
-            { label = "Stungun",      weapon = "WEAPON_STUNGUN",      cost = 100 },
-            { label = "Flashlight",   weapon = "WEAPON_FLASHLIGHT",   cost = 80  },
-            { label = "Carbine Rifle", weapon = "WEAPON_CARBINERIFLE", cost = 80  },
+            { label = "Pistola AP",   weapon = "WEAPON_APPISTOL",    cost = 100 },
+            { label = "Cassetete",    weapon = "WEAPON_NIGHTSTICK",   cost = 0   },
+            { label = "Taser",        weapon = "WEAPON_STUNGUN",      cost = 100 },
+            { label = "Lanterna",     weapon = "WEAPON_FLASHLIGHT",   cost = 80  },
+            { label = "Carabina",     weapon = "WEAPON_CARBINERIFLE", cost = 80  },
         },
     },
 }
@@ -96,25 +96,25 @@ Config.Private.FallbackWeapons = {
 
 Config.Private.FallbackOutfits = {
     recruit = {
-        short_sleeve = { label = "Short Sleeve", outfit = Outfits.short_sleeve },
-        long_sleeve  = { label = "Long Sleeve",  outfit = Outfits.long_sleeve  },
+        short_sleeve = { label = "Manga curta", outfit = Outfits.short_sleeve },
+        long_sleeve  = { label = "Manga longa", outfit = Outfits.long_sleeve  },
     },
     officer = {
-        short_sleeve = { label = "Short Sleeve", outfit = Outfits.short_sleeve },
-        long_sleeve  = { label = "Long Sleeve",  outfit = Outfits.long_sleeve  },
+        short_sleeve = { label = "Manga curta", outfit = Outfits.short_sleeve },
+        long_sleeve  = { label = "Manga longa", outfit = Outfits.long_sleeve  },
     },
     sergeant = {
-        short_sleeve = { label = "Short Sleeve", outfit = Outfits.short_sleeve },
-        long_sleeve  = { label = "Long Sleeve",  outfit = Outfits.long_sleeve  },
+        short_sleeve = { label = "Manga curta", outfit = Outfits.short_sleeve },
+        long_sleeve  = { label = "Manga longa", outfit = Outfits.long_sleeve  },
     },
     lieutenant = {
-        short_sleeve = { label = "Short Sleeve", outfit = Outfits.short_sleeve },
-        long_sleeve  = { label = "Long Sleeve",  outfit = Outfits.long_sleeve  },
+        short_sleeve = { label = "Manga curta", outfit = Outfits.short_sleeve },
+        long_sleeve  = { label = "Manga longa", outfit = Outfits.long_sleeve  },
         swat         = { label = "SWAT",         outfit = Outfits.swat         },
     },
     boss = {
-        short_sleeve = { label = "Short Sleeve", outfit = Outfits.short_sleeve },
-        long_sleeve  = { label = "Long Sleeve",  outfit = Outfits.long_sleeve  },
+        short_sleeve = { label = "Manga curta", outfit = Outfits.short_sleeve },
+        long_sleeve  = { label = "Manga longa", outfit = Outfits.long_sleeve  },
         swat         = { label = "SWAT",         outfit = Outfits.swat         },
     },
 }

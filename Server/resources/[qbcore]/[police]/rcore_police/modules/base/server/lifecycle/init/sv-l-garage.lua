@@ -83,7 +83,7 @@ RegisterNetEvent("rcore_police:server:requestVehicleFromStorage", function(data)
     
     local group = groupData and groupData.group or nil
     
-    GarageService.RequestVehicleFromGarage(src, group, data.model, data.coords)
+    GarageService.RequestVehicleFromGarage(src, group, data.coords, data.model)
 end)
 
 RegisterNetEvent("rcore_police:server:requestBuyDepartmentVehicle", function(data)
@@ -155,21 +155,24 @@ RegisterNetEvent("rcore_police:server:requestParkingSpace", function(data)
         return dbg.debug("Failed spawn vehicle for player named %s with playerId (%s), player not at request zone area.", GetPlayerName(src), src)
     end
     
-    if not GroupsService.IsPlayerMemberOfGroup(src) then
+    local isMember, groupData = GroupsService.IsPlayerMemberOfGroup(src)
+    if not isMember then
         return dbg.debug("Failed spawn vehicle for player named %s with playerId (%s), player is not part of department.", GetPlayerName(src), src)
     end
     
     local zoneJob = UtilsService.GetZoneJob(zone)
-    local targetJob = nil
+    local playerJob = Framework.getJob(src)
+    local targetJob = groupData and groupData.group or nil
     
     if type(zoneJob) == "table" then
         for _, jobName in pairs(zoneJob) do
-            if targetJob and targetJob.name == jobName then
+            if playerJob and playerJob.name == jobName then
                 targetJob = jobName
+                break
             end
         end
-    elseif targetJob and targetJob.name == zoneJob then
-        targetJob = targetJob.name
+    elseif playerJob and playerJob.name == zoneJob then
+        targetJob = playerJob.name
     end
     
     spawnVehicleSessions[src] = {

@@ -1,7 +1,6 @@
 -- Seoul Base: Config.Prison = NONE uses the current LB Tablet vRP jail adapter.
 -- Confirmed export: exports['lb-tablet']:JailPlayer(identifier, seconds, reason, officerSource)
-CreateThread(function()
-    if Config.Prison ~= Prison.NONE then return end
+if Config.Prison == Prison.NONE then
 
     RegisterNetEvent('rcore_police:server:requestSeoulPrison', function(target, minutes, reason)
         local src = source
@@ -32,4 +31,4 @@ CreateThread(function()
 
         Framework.sendNotification(src, ('Prisao registrada por %d minuto(s).'):format(minutes), 'success')
     end)
-end)
+end

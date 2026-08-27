@@ -47,7 +47,7 @@ Config = {
         'DEBUG',
         'MENU',
     },
-    Locale = 'en', -- Choose your language ['en']
+    Locale = 'pt-br', -- Seoul: idioma portugues brasileiro
     Database = Database.OX, -- Seoul: oxmysql
         --[[        Supported database connectors:
             * AUTO_DETECT: auto-detect db connector
@@ -479,7 +479,7 @@ Config = {
             ]]
             InvoiceMode = 1,
             Blip = {
-                Label = 'Speed camera',
+                Label = 'Radar movel',
                 Sprite = 184,
                 Color = 2,
                 Scale = 1.0,
@@ -488,15 +488,15 @@ Config = {
         HelpKeys = {
             {
                 key = 'E',
-                label = 'Press'
+                label = 'Pressionar'
             },
             {
                 key = 'MOUSE_UP',
-                label = 'Rotate'
+                label = 'Girar'
             },
             {
                 key = 'H',
-                label = 'Exit'
+                label = 'Sair'
             },
         },
         AllowDrawLineDirectionHelper = true, -- This is used to draw line which help to navigate for camera direction (only for speed_camera)
@@ -529,21 +529,21 @@ Config = {
             [PROP_TYPES.WHEEL_CLAMP] = {
                 prop = 'prop_spot_clamp',
                 itemName = Items.WheelClamp,
-                label = 'Wheel clamp',
+                label = 'Trava de roda',
                 action = ZONE_ACTIONS.BLOCK_VEHICLE_MOVEMENT,
                 needItem = Items.WheelClampWrench,
-                needItemLabel = "Wheel Clamp Wrench"
+                needItemLabel = "Chave da trava de roda"
             },
             [PROP_TYPES.SPIKES] = {
                 prop = 'p_ld_stinger_s',
                 itemName = Items.Spikes,
-                label = 'Spike',
+                label = 'Fura-pneu',
                 action = ZONE_ACTIONS.DESTROY_VEHICLE_TYRES,
             },
             [PROP_TYPES.BARRICADE] = {
                 prop = 'rds_prop_barrier_police',
                 itemName = Items.Barrier,
-                label = 'Barrier',
+                label = 'Barreira',
                 action = ZONE_ACTIONS.BLOCK_VEHICLES_IN_FRONT,
             },
             [PROP_TYPES.SPEED_RADAR] = {
@@ -571,25 +571,25 @@ Config = {
         EnableProps = true,   -- This allows props
         PropList = {
             {
-                label = 'Spikes',
+                label = 'Fura-pneus',
                 model = 'p_ld_stinger_s',
                 icon = '',
                 type = PROP_TYPES.SPIKES,
             },
             {
-                label = 'Barrier',
+                label = 'Barreira',
                 model = 'rds_prop_barrier_police',
                 icon = 'fa-solid fa-road-barrier',
                 type = PROP_TYPES.BARRICADE
             },
             {
-                label = 'Megaphone',
+                label = 'Megafone',
                 model = 'prop_megaphone_01',
                 icon = '',
                 type = PROP_TYPES.MEGA_PHONE
             },
             {
-                label = 'Radar',
+                label = 'Radar movel',
                 model = 'rds_speed_camera',
                 icon = '',
                 type = PROP_TYPES.SPEED_RADAR
@@ -611,30 +611,30 @@ Config = {
             mode = SHOP_STATE.ACCESS_BY_ANY_MEMBERS,
             storageMode = STORAGE_MODE.FREE,
             storage = {
-                [Items.Spikes] = { label = "Spikes", price = 0 },
-                [Items.Handcuffs] = { label = "Handcuffs", price = 255 },
-                [Items.Barrier] = { label = "Barrier", price = 255 },
-                [Items.HandcuffsKeys] = { label = "Handcuffs Keys", price = 0 },
-                [Items.PaperBag] = { label = "Paperbag", price = 0 },
-                [Items.Zipties] = { label = "Zipties", price = 0 },
+                [Items.Spikes] = { label = "Fura-pneus", price = 0 },
+                [Items.Handcuffs] = { label = "Algemas", price = 255 },
+                [Items.Barrier] = { label = "Barreira", price = 255 },
+                [Items.HandcuffsKeys] = { label = "Chave de algemas", price = 0 },
+                [Items.PaperBag] = { label = "Saco de papel", price = 0 },
+                [Items.Zipties] = { label = "Enforca-gato", price = 0 },
                 [Items.BodyCam] = { label = "Bodycam", price = 0 },
-                [Items.WheelClamp] = { label = "Wheel Clamp", price = 0 },
-                [Items.WheelClampWrench] = { label = "Wheel Clamp Wrench", price = 0 },
-                [Items.Camera] = { label = "Evidence camera", price = 0 },
-                [Items.BodyCamTablet] = { label = "Bodycam Tablet", price = 250 },
-                [Items.SpeedCamera] = { label = "Speed Radar", price = 250 },
-                [Items.Megaphone] = { label = "Megaphone", price = 0 },
-                [Items.PanicButton] = { label = "Panic Button", price = 0 },
-                [Items.ZipTiesCutter] = { label = "Zipties Cutter", price = 0 },
+                [Items.WheelClamp] = { label = "Trava de roda", price = 0 },
+                [Items.WheelClampWrench] = { label = "Chave da trava de roda", price = 0 },
+                [Items.Camera] = { label = "Camera de evidencia", price = 0 },
+                [Items.BodyCamTablet] = { label = "Tablet da bodycam", price = 250 },
+                [Items.SpeedCamera] = { label = "Radar movel", price = 250 },
+                [Items.Megaphone] = { label = "Megafone", price = 0 },
+                [Items.PanicButton] = { label = "Botao de panico", price = 0 },
+                [Items.ZipTiesCutter] = { label = "Cortador de enforca-gato", price = 0 },
                 [Items.GPS] = { label = "GPS", price = 0 },
                 ['radio'] = { label = "Radio", price = 250 },
-                ['WEAPON_RIFLE_AMMO'] = { label = "Municao de Rifle", price = 70 },
-                ['WEAPON_PISTOL_AMMO'] = { label = "Municao de Pistola", price = 50 },
-                ['WEAPON_NIGHTSTICK'] = { label = "Nightstick", price = 500 },
+                ['WEAPON_RIFLE_AMMO'] = { label = "Municao de rifle", price = 70 },
+                ['WEAPON_PISTOL_AMMO'] = { label = "Municao de pistola", price = 50 },
+                ['WEAPON_NIGHTSTICK'] = { label = "Cassetete", price = 500 },
                 ['WEAPON_CARBINERIFLE'] = { label = "Carabina", price = 500 },
-                ['WEAPON_STUNGUN'] = { label = "Stun Gun", price = 150 },
-                ['WEAPON_APPISTOL'] = { label = "AP Pistol", price = 500 },
-                ['WEAPON_FLASHLIGHT'] = { label = "Flashlight", price = 300 },
+                ['WEAPON_STUNGUN'] = { label = "Taser", price = 150 },
+                ['WEAPON_APPISTOL'] = { label = "Pistola AP", price = 500 },
+                ['WEAPON_FLASHLIGHT'] = { label = "Lanterna", price = 300 },
             },
             access = {
                 [0] = {
@@ -705,15 +705,15 @@ Config = {
         UseOurBuiltinGarage = true, -- This allow to enforce our garages
         DefaultDepartmentTemplate = {
             storage = {
-                ['police4'] = { label = "Unmarked Cruiser", model = 'police4', price = 0 },
-                ['police3'] = { label = "Police Cruiser (A)", model = 'police3', price = 0 },
-                ['police2'] = { label = "Police Cruiser (B)", model = 'police2', price = 0 },
-                ['police'] = { label = "Police Cruiser (C)", model = 'police', price = 0 },
-                ['policeb'] = { label = "Police Bike", model = 'policeb', price = 0 },
-                ['policet'] = { label = "Police T", model = 'policet', price = 0 },
-                ['riot'] = { label = "Police Riot", model = 'riot', price = 0 },
+                ['police4'] = { label = "Viatura descaracterizada", model = 'police4', price = 0 },
+                ['police3'] = { label = "Viatura policial (A)", model = 'police3', price = 0 },
+                ['police2'] = { label = "Viatura policial (B)", model = 'police2', price = 0 },
+                ['police'] = { label = "Viatura policial (C)", model = 'police', price = 0 },
+                ['policeb'] = { label = "Moto policial", model = 'policeb', price = 0 },
+                ['policet'] = { label = "Van policial", model = 'policet', price = 0 },
+                ['riot'] = { label = "Blindado policial", model = 'riot', price = 0 },
                 ['fbi2'] = { label = "FBI", model = 'fbi2', price = 0 },
-                ['polmav'] = { label = "Police Maverick", model = 'polmav', price = 0, isAir = true },
+                ['polmav'] = { label = "Helicoptero policial", model = 'polmav', price = 0, isAir = true },
             },
             access = {
                 [0] = {
@@ -759,7 +759,7 @@ Config = {
         VehicleExtras = {
             ['police'] = {
                 {
-                    label = 'Sirens - type (B)',
+                    label = 'Sirene - tipo (B)',
                     state = true,
                     id = 2,
                 }
@@ -811,15 +811,15 @@ Config = {
             },
             VehiclesToGrade = {
                 storage = {
-                    ['police4'] = { label = "Unmarked Cruiser", model = 'police4', image = 'https://docs.fivem.net/vehicles/police4.webp', price = 300 },
-                    ['police3'] = { label = "Police Cruiser (A)", model = 'police3', price = 300 },
-                    ['police2'] = { label = "Police Cruiser (B)", model = 'police2', price = 300 },
-                    ['police'] = { label = "Police Cruiser (C)", model = 'police', price = 300 },
-                    ['policeb'] = { label = "Police Bike", model = 'policeb', price = 300 },
-                    ['policet'] = { label = "Police T", model = 'policet', price = 300 },
-                    ['riot'] = { label = "Police Riot", model = 'riot', price = 300 },
+                    ['police4'] = { label = "Viatura descaracterizada", model = 'police4', image = 'https://docs.fivem.net/vehicles/police4.webp', price = 300 },
+                    ['police3'] = { label = "Viatura policial (A)", model = 'police3', price = 300 },
+                    ['police2'] = { label = "Viatura policial (B)", model = 'police2', price = 300 },
+                    ['police'] = { label = "Viatura policial (C)", model = 'police', price = 300 },
+                    ['policeb'] = { label = "Moto policial", model = 'policeb', price = 300 },
+                    ['policet'] = { label = "Van policial", model = 'policet', price = 300 },
+                    ['riot'] = { label = "Blindado policial", model = 'riot', price = 300 },
                     ['fbi2'] = { label = "FBI", model = 'fbi2', price = 300 },
-                    ['polmav'] = { label = "Police Maverick", model = 'polmav', price = 300, isAir = true },
+                    ['polmav'] = { label = "Helicoptero policial", model = 'polmav', price = 300, isAir = true },
                 },
                 access = {
                     [0] = {
@@ -846,30 +846,30 @@ Config = {
                 mode = SHOP_STATE.ACCESS_BY_ANY_MEMBERS,
                 storageMode = STORAGE_MODE.FREE,
                 storage = {
-                    [Items.Spikes] = { label = "Spikes", price = 0 },
-                    [Items.Handcuffs] = { label = "Handcuffs", price = 255 },
-                    [Items.Barrier] = { label = "Barrier", price = 255 },
-                    [Items.HandcuffsKeys] = { label = "Handcuffs Keys", price = 0 },
-                    [Items.PaperBag] = { label = "Paperbag", price = 0 },
-                    [Items.Zipties] = { label = "Zipties", price = 0 },
+                    [Items.Spikes] = { label = "Fura-pneus", price = 0 },
+                    [Items.Handcuffs] = { label = "Algemas", price = 255 },
+                    [Items.Barrier] = { label = "Barreira", price = 255 },
+                    [Items.HandcuffsKeys] = { label = "Chave de algemas", price = 0 },
+                    [Items.PaperBag] = { label = "Saco de papel", price = 0 },
+                    [Items.Zipties] = { label = "Enforca-gato", price = 0 },
                     [Items.BodyCam] = { label = "Bodycam", price = 0 },
-                    [Items.WheelClamp] = { label = "Wheel Clamp", price = 0 },
-                    [Items.WheelClampWrench] = { label = "Wheel Clamp Wrench", price = 0 },
-                    [Items.Camera] = { label = "Evidence camera", price = 0 },
-                    [Items.BodyCamTablet] = { label = "Bodycam Tablet", price = 250 },
-                    [Items.SpeedCamera] = { label = "Speed Radar", price = 250 },
-                    [Items.Megaphone] = { label = "Megaphone", price = 0 },
-                    [Items.PanicButton] = { label = "Panic Button", price = 0 },
-                    [Items.ZipTiesCutter] = { label = "Zipties Cutter", price = 0 },
+                    [Items.WheelClamp] = { label = "Trava de roda", price = 0 },
+                    [Items.WheelClampWrench] = { label = "Chave da trava de roda", price = 0 },
+                    [Items.Camera] = { label = "Camera de evidencia", price = 0 },
+                    [Items.BodyCamTablet] = { label = "Tablet da bodycam", price = 250 },
+                    [Items.SpeedCamera] = { label = "Radar movel", price = 250 },
+                    [Items.Megaphone] = { label = "Megafone", price = 0 },
+                    [Items.PanicButton] = { label = "Botao de panico", price = 0 },
+                    [Items.ZipTiesCutter] = { label = "Cortador de enforca-gato", price = 0 },
                     [Items.GPS] = { label = "GPS", price = 0 },
                     ['radio'] = { label = "Radio", price = 250 },
-                    ['WEAPON_RIFLE_AMMO'] = { label = "Municao de Rifle", price = 70 },
-                    ['WEAPON_PISTOL_AMMO'] = { label = "Municao de Pistola", price = 50 },
-                    ['WEAPON_NIGHTSTICK'] = { label = "Nightstick", price = 500 },
+                    ['WEAPON_RIFLE_AMMO'] = { label = "Municao de rifle", price = 70 },
+                    ['WEAPON_PISTOL_AMMO'] = { label = "Municao de pistola", price = 50 },
+                    ['WEAPON_NIGHTSTICK'] = { label = "Cassetete", price = 500 },
                     ['WEAPON_CARBINERIFLE'] = { label = "Carabina", price = 500 },
-                    ['WEAPON_STUNGUN'] = { label = "Stun Gun", price = 150 },
-                    ['WEAPON_APPISTOL'] = { label = "AP Pistol", price = 500 },
-                    ['WEAPON_FLASHLIGHT'] = { label = "Flashlight", price = 300 },
+                    ['WEAPON_STUNGUN'] = { label = "Taser", price = 150 },
+                    ['WEAPON_APPISTOL'] = { label = "Pistola AP", price = 500 },
+                    ['WEAPON_FLASHLIGHT'] = { label = "Lanterna", price = 300 },
                 },
                 access = {
                     [0] = {
@@ -902,15 +902,15 @@ Config = {
             },
             VehiclesToGrade = {
                 storage = {
-                    ['police4'] = { label = "Unmarked Cruiser", model = 'police4', price = 0 },
-                    ['police3'] = { label = "Police Cruiser (A)", model = 'police3', price = 0 },
-                    ['police2'] = { label = "Police Cruiser (B)", model = 'police2', price = 0 },
-                    ['police'] = { label = "Police Cruiser (C)", model = 'police', price = 0 },
-                    ['policeb'] = { label = "Police Bike", model = 'policeb', price = 0 },
-                    ['policet'] = { label = "Police T", model = 'policet', price = 0 },
-                    ['riot'] = { label = "Police Riot", model = 'riot', price = 0 },
+                    ['police4'] = { label = "Viatura descaracterizada", model = 'police4', price = 0 },
+                    ['police3'] = { label = "Viatura policial (A)", model = 'police3', price = 0 },
+                    ['police2'] = { label = "Viatura policial (B)", model = 'police2', price = 0 },
+                    ['police'] = { label = "Viatura policial (C)", model = 'police', price = 0 },
+                    ['policeb'] = { label = "Moto policial", model = 'policeb', price = 0 },
+                    ['policet'] = { label = "Van policial", model = 'policet', price = 0 },
+                    ['riot'] = { label = "Blindado policial", model = 'riot', price = 0 },
                     ['fbi2'] = { label = "FBI", model = 'fbi2', price = 0 },
-                    ['polmav'] = { label = "Police Maverick", model = 'polmav', price = 0, isAir = true },
+                    ['polmav'] = { label = "Helicoptero policial", model = 'polmav', price = 0, isAir = true },
                 },
                 access = {
                     [0] = {
@@ -936,30 +936,30 @@ Config = {
                 mode = SHOP_STATE.ACCESS_BY_ANY_MEMBERS,
                 storageMode = STORAGE_MODE.FREE,
                 storage = {
-                    [Items.Spikes] = { label = "Spikes", price = 0 },
-                    [Items.Handcuffs] = { label = "Handcuffs", price = 255 },
-                    [Items.Barrier] = { label = "Barrier", price = 255 },
-                    [Items.HandcuffsKeys] = { label = "Handcuffs Keys", price = 0 },
-                    [Items.PaperBag] = { label = "Paperbag", price = 0 },
-                    [Items.Zipties] = { label = "Zipties", price = 0 },
+                    [Items.Spikes] = { label = "Fura-pneus", price = 0 },
+                    [Items.Handcuffs] = { label = "Algemas", price = 255 },
+                    [Items.Barrier] = { label = "Barreira", price = 255 },
+                    [Items.HandcuffsKeys] = { label = "Chave de algemas", price = 0 },
+                    [Items.PaperBag] = { label = "Saco de papel", price = 0 },
+                    [Items.Zipties] = { label = "Enforca-gato", price = 0 },
                     [Items.BodyCam] = { label = "Bodycam", price = 0 },
-                    [Items.WheelClamp] = { label = "Wheel Clamp", price = 0 },
-                    [Items.WheelClampWrench] = { label = "Wheel Clamp Wrench", price = 0 },
-                    [Items.Camera] = { label = "Evidence camera", price = 0 },
-                    [Items.BodyCamTablet] = { label = "Bodycam Tablet", price = 250 },
-                    [Items.SpeedCamera] = { label = "Speed Radar", price = 250 },
-                    [Items.Megaphone] = { label = "Megaphone", price = 0 },
-                    [Items.PanicButton] = { label = "Panic Button", price = 0 },
-                    [Items.ZipTiesCutter] = { label = "Zipties Cutter", price = 0 },
+                    [Items.WheelClamp] = { label = "Trava de roda", price = 0 },
+                    [Items.WheelClampWrench] = { label = "Chave da trava de roda", price = 0 },
+                    [Items.Camera] = { label = "Camera de evidencia", price = 0 },
+                    [Items.BodyCamTablet] = { label = "Tablet da bodycam", price = 250 },
+                    [Items.SpeedCamera] = { label = "Radar movel", price = 250 },
+                    [Items.Megaphone] = { label = "Megafone", price = 0 },
+                    [Items.PanicButton] = { label = "Botao de panico", price = 0 },
+                    [Items.ZipTiesCutter] = { label = "Cortador de enforca-gato", price = 0 },
                     [Items.GPS] = { label = "GPS", price = 0 },
                     ['radio'] = { label = "Radio", price = 250 },
-                    ['WEAPON_RIFLE_AMMO'] = { label = "Municao de Rifle", price = 70 },
-                    ['WEAPON_PISTOL_AMMO'] = { label = "Municao de Pistola", price = 50 },
-                    ['WEAPON_NIGHTSTICK'] = { label = "Nightstick", price = 500 },
+                    ['WEAPON_RIFLE_AMMO'] = { label = "Municao de rifle", price = 70 },
+                    ['WEAPON_PISTOL_AMMO'] = { label = "Municao de pistola", price = 50 },
+                    ['WEAPON_NIGHTSTICK'] = { label = "Cassetete", price = 500 },
                     ['WEAPON_CARBINERIFLE'] = { label = "Carabina", price = 500 },
-                    ['WEAPON_STUNGUN'] = { label = "Stun Gun", price = 150 },
-                    ['WEAPON_APPISTOL'] = { label = "AP Pistol", price = 500 },
-                    ['WEAPON_FLASHLIGHT'] = { label = "Flashlight", price = 300 },
+                    ['WEAPON_STUNGUN'] = { label = "Taser", price = 150 },
+                    ['WEAPON_APPISTOL'] = { label = "Pistola AP", price = 500 },
+                    ['WEAPON_FLASHLIGHT'] = { label = "Lanterna", price = 300 },
                 },
                 access = {
                     [0] = {
@@ -1001,7 +1001,7 @@ Config = {
     CheckVehicleDistance = 3.0, -- This is default checking distance when near vehicle
     RadialMenu = {
         Enable = true, -- This allows to enable/disable included radial menu
-        Key = 'F5'     -- This allows to define default key for radial menu
+        Key = 'F1'     -- Seoul: tecla para abrir o radial policial
     },
     Zones = {
         RenderDistanceNPC = 150.0, -- This is default zone render distance for NPC
@@ -1180,4 +1180,3 @@ Config.ChatSuggestions = {
         { name = _U('SUGGESTIONS.KEY_NUMBER'), help = _U('SUGGESTIONS.HELP_LICENCE') },
     }
 }
-
