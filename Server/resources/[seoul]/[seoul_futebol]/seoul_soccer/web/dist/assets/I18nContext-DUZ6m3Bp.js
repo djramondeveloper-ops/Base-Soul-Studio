@@ -1,0 +1,1 @@
+import{t as e}from"./I18nContext-D69uD_23.js";export{e as I18nProvider};

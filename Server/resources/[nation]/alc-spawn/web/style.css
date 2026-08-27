@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+html  {
+  font-size: .75vw;
+}
+
+body {
+  background-image: url('./assets/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  height: 100vh;
+
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  animation: fadeIn 1s ease-out;
+}
+
+::-webkit-scrollbar {
+  height: 0.375rem;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(161, 161, 161, 0.02) 100%
+  );
+}
+
+::-webkit-scrollbar-thumb {
+  width: 3.125rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+
+  border-radius: 1.875rem;
+  background: #7c3aed;
+}
+
+header {
+  margin-left: 1.5rem;
+  animation: fadeIn 1s ease-out 0.2s backwards;
+}
+
+main {
+  display: inline-flex;
+  align-items: center;
+  width: 90rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  align-self: flex-end;
+  gap: 2.5rem;
+  margin-top: 3.62rem;
+  animation: fadeIn 1s ease-out 0.4s backwards;
+  overflow-y: hidden;
+}
+
+.spawn {
+  mask-image: url('./assets/image.png');
+  mask-size: cover;
+  mask-position: center;
+  mask-repeat: no-repeat;
+
+  width: 20.625rem;
+  height: 31.25rem;
+  flex-shrink: 0;
+
+  background-image: url('./assets/vanilla.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+  filter: grayscale(1) sepia(1) hue-rotate(230deg) saturate(1.25) brightness(.82);
+  background-color: rgba(76, 29, 149, .32);
+  background-blend-mode: soft-light;
+
+  position: relative;
+  animation: fadeIn 1s ease-out backwards;
+}
+
+.spawn:hover {
+  filter: saturate(1);
+  transform: translateY(-5px);
+}
+
+.spawn .location {
+  position: absolute;
+  top: -0.6rem;
+  right: 0.3rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.spawn img {
+  width: 6rem;
+}
+
+.spawn button {
+  border-radius: 0.1875rem;
+  background: linear-gradient(96deg, #7c3aed -5.79%, #3b0764 113.15%);
+  box-shadow: 0px 0px 26px 0px rgba(124, 58, 237, 0.35);
+
+  display: flex;
+  width: 15rem;
+  height: 3.125rem;
+  padding: 0.625rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 3.8rem;
+
+  color: #fff;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: 'DM Sans';
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+
+}
+
+.spawn button:hover {
+  transform: translateX(-50%) scale(1.05);
+}
+
+footer {
+  width: 90rem;
+  height: 5rem;
+  flex-shrink: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+
+  margin-top: 2.56rem;
+
+  border-radius: 0.125rem;
+  border: 1px solid rgba(167, 139, 250, 0.18);
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(76, 29, 149, 0.22) 0%,
+    rgba(20, 5, 35, 0.12) 100%
+  );
+
+  animation: fadeIn 1s ease-out 0.6s backwards;
+}
+
+footer .last-loc {
+  display: flex;
+  width: 15.375rem;
+  height: 3.375rem;
+  padding: 0.625rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+
+  cursor: pointer;
+
+  color: #FFF;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: "DM Sans";
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+
+  border-radius: 0.1875rem;
+  background: linear-gradient(96deg, #7c3aed -5.79%, #3b0764 113.15%);
+  box-shadow: 0px 0px 26px 0px rgba(124, 58, 237, 0.35);
+
+  transition: transform 0.3s ease;
+}
+
+footer .last-loc:hover {
+  transform: scale(1.05);
+}
+
+
+/* Seoul Theme Bridge - Spawn */
+:root {
+  --seoul-primary: #7c3aed;
+  --seoul-primary-rgb: 124, 58, 237;
+  --seoul-primary-dark: #3b0764;
+  --seoul-primary-strong: rgba(124, 58, 237, 0.90);
+}
+
+body[data-seoul-theme] button,
+body[data-seoul-theme] .spawn button,
+body[data-seoul-theme] .last-loc,
+body[data-seoul-theme] main .spawn,
+body[data-seoul-theme] .selected,
+body[data-seoul-theme] .active {
+  background: linear-gradient(96deg, var(--seoul-primary) -5.79%, var(--seoul-primary-dark) 113.15%) !important;
+  box-shadow: 0 0 26px rgba(var(--seoul-primary-rgb), 0.35) !important;
+  border-color: rgba(var(--seoul-primary-rgb), 0.75) !important;
+}
+
+body[data-seoul-theme] header svg stop:first-child {
+  stop-color: var(--seoul-primary) !important;
+}
+
+body[data-seoul-theme] header svg stop:last-child {
+  stop-color: var(--seoul-primary-dark) !important;
+}
+
+/* Seoul Neutral Theme Hotfix - Spawn
+   Cards neutros + botão/acento dinâmico do AdminControl. */
+body[data-seoul-theme] {
+  --seoul-bg-glass: rgba(12, 12, 16, 0.74);
+  --seoul-bg-panel: rgba(18, 18, 22, 0.84);
+  --seoul-bg-soft: rgba(255, 255, 255, 0.06);
+  --seoul-bg-hover: rgba(255, 255, 255, 0.09);
+  --seoul-border-soft: rgba(255, 255, 255, 0.12);
+}
+
+body[data-seoul-theme] main,
+body[data-seoul-theme] .spawn,
+body[data-seoul-theme] main .spawn,
+body[data-seoul-theme] .last-loc,
+body[data-seoul-theme] .selected,
+body[data-seoul-theme] .active,
+body[data-seoul-theme] .location,
+body[data-seoul-theme] .card {
+  background: var(--seoul-bg-panel) !important;
+  border-color: var(--seoul-border-soft) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24) !important;
+}
+
+body[data-seoul-theme] .spawn:hover,
+body[data-seoul-theme] main .spawn:hover,
+body[data-seoul-theme] .last-loc:hover,
+body[data-seoul-theme] .selected,
+body[data-seoul-theme] .active {
+  background: var(--seoul-bg-hover) !important;
+  border-color: rgba(var(--seoul-primary-rgb), 0.72) !important;
+  box-shadow: 0 0 16px rgba(var(--seoul-primary-rgb), 0.22) !important;
+}
+
+body[data-seoul-theme] button,
+body[data-seoul-theme] .confirm,
+body[data-seoul-theme] .spawn-button {
+  background: linear-gradient(135deg, var(--seoul-primary), rgba(var(--seoul-primary-rgb), 0.72)) !important;
+  border-color: rgba(var(--seoul-primary-rgb), 0.78) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 18px rgba(var(--seoul-primary-rgb), 0.26) !important;
+}
+
+body[data-seoul-theme] header svg stop:first-child { stop-color: var(--seoul-primary) !important; }
+body[data-seoul-theme] header svg stop:last-child { stop-color: rgba(var(--seoul-primary-rgb), 0.45) !important; }
+body[data-seoul-theme] i,
+body[data-seoul-theme] svg,
+body[data-seoul-theme] path,
+body[data-seoul-theme] .icon {
+  color: var(--seoul-primary) !important;
+  fill: var(--seoul-primary) !important;
+}

@@ -1,0 +1,37 @@
+{
+    "testgroup": {
+        "Name": "testgroup",
+        "Hierarchy": [
+            "testgroup"
+        ],
+        "Permission": [],
+        "Service": false,
+        "Type": "job",
+        "Markers": false
+    },
+    "Milicia": {
+        "Name": "Milicia",
+        "Hierarchy": [
+            {
+                "Permission": [
+                    "milicialider.permissao"
+                ],
+                "Leader": true,
+                "Group": "MiliciaLider",
+                "Title": "Milicia Lider"
+            },
+            {
+                "Permission": [],
+                "Group": "Milicia",
+                "Title": "Milicia Membro"
+            }
+        ],
+        "Service": false,
+        "OrgPanel": true,
+        "Permissions": [
+            "milicia.permissao"
+        ],
+        "Type": "job",
+        "Markers": false
+    }
+}

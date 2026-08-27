@@ -1,0 +1,5 @@
+-- =====================================================
+--  rcore_police · types.lua
+--  Engineered by Eazy Fxap
+--  Original: 12 lines → Cleaned: 5 lines
+-- =====================================================

@@ -1,0 +1,1 @@
+-- Casas desativado nesta v1: será adaptado depois para script oficial da Seoul.

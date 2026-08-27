@@ -1,0 +1,5 @@
+-- =====================================================
+--  rcore_police · modules/base/server/lifecycle/init/sv-l-escort.lua
+--  Engineered by Eazy Fxap
+--  Original: 12 lines → Cleaned: 6 lines
+-- =====================================================

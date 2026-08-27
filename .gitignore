@@ -1,0 +1,15 @@
+# FiveM runtime/generated files
+Server/cache/
+Server/artifacts/
+
+# Local archives
+*.zip
+*.7z
+*.rar
+
+# Local machine/editor files
+Thumbs.db
+Desktop.ini
+.replxx_history
+.vscode/
+.idea/

@@ -1,0 +1,5 @@
+-- =====================================================
+--  rcore_police · modules/base/server/init/sv-db.lua
+--  Engineered by Eazy Fxap
+--  Original: 12 lines → Cleaned: 6 lines
+-- =====================================================

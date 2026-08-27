@@ -1,0 +1,53 @@
+
+---@alias FrameworkType 'seoul'|'esx'|'qb'
+
+--[[ Start ox_lib.locale ]]
+lib.locale()
+
+shared = {}
+shared.resource = GetCurrentResourceName()
+
+--- Checks if the given resource is started.
+---@param resourceName string
+---@return boolean
+function shared.IsResourceStart(resourceName)
+    return GetResourceState(resourceName) == 'started'
+end
+
+--- Returns the name of the active framework.
+---@return FrameworkType|nil
+function shared.GetFrameworkName()
+    if shared.IsResourceStart('vrp') then
+        return 'seoul'
+    elseif shared.IsResourceStart('qb-core') then
+        return 'qb'
+    elseif shared.IsResourceStart('es_extended') then
+        return 'esx'
+    end
+    return nil
+end
+
+--- Retrieves the core object of the active framework.
+--- @return table|nil
+function shared.GetFrameworkObject()
+    local frameworkName = shared.GetFrameworkName()
+    if not frameworkName then return nil end
+    if frameworkName == 'seoul' then
+        return nil
+    elseif frameworkName == 'qb' then
+        return exports['qb-core']:GetCoreObject()
+    elseif frameworkName == 'esx' then
+        return exports['es_extended']:getSharedObject()
+    end
+end
+
+--- Formats and returns a string combining the script name and event.
+--- Created for the convenience of the developer.
+--- @param event string
+--- @return string
+function _e(event)
+    return shared.resource .. ':' .. event
+end
+
+shared.framework = shared.GetFrameworkName()
+

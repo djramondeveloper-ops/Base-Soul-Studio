@@ -1,0 +1,1 @@
+-- Garagens desativado nesta v1: módulo will_* não entra na Seoul.

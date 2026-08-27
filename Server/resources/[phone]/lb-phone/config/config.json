@@ -1,0 +1,174 @@
+{
+    "wallpapers": {
+        "capa1": "capa1.png",
+        "capa2": "capa2.png"
+    },
+    "sounds": {
+        "ringtone": {
+            "default": "default.mp3",
+            "harp": "harp.mp3",
+            "apex": "apex.mp3",
+            "radar": "radar.mp3",
+            "sencha": "sencha.mp3",
+            "silk": "silk.mp3",
+            "summit": "summit.mp3"
+        },
+        "texttone": {
+            "default": "default.mp3"
+        },
+        "appNotifications": {}
+    },
+    "apps": {
+        "Phone": {
+			"name": "Telefone",
+			"removable": false,
+			"size": 1900
+		},
+		"Messages": {
+			"name": "Messages",
+			"removable": false,
+			"size": 4400
+		},
+		"Notes": {
+			"name": "Notas",
+			"removable": false,
+			"size": 18600
+		},
+		"Settings": {
+			"name": "Configurações",
+			"removable": false,
+			"size": 2300
+		},
+		"Photos": {
+			"name": "Fotos",
+			"removable": false,
+			"size": 9000
+		},
+		"Camera": {
+			"name": "Câmera",
+			"removable": false,
+			"size": 1200
+		},
+		"Weather": {
+			"name": "Clima",
+			"removable": false,
+			"size": 9400
+		},
+		"Calculator": {
+			"name": "Calculadora",
+			"removable": false,
+			"size": 831
+		},
+		"AppStore": {
+			"name": "Aplicativos",
+			"removable": false,
+			"size": 84000
+		},
+		"Clock": {
+			"name": "Relógio",
+			"removable": false,
+			"size": 1200
+		},
+		"Maps": {
+			"name": "Mapa",
+			"removable": false,
+			"size": 63400
+		},
+		"YellowPages": {
+			"name": "Páginas",
+			"description": "Encontre empresas e serviços locais",
+			"removable": true,
+			"size": 84400,
+			"images": ["1.webp", "2.webp"]
+		},
+		"MarketPlace": {
+			"name": "Mercado",
+			"description": "Compre e venda itens",
+			"removable": true,
+			"size": 84400,
+			"images": ["1.webp", "2.webp", "3.webp", "4.webp"]
+		},
+		"Home": {
+			"name": "Casa",
+			"removable": false,
+			"size": 19200
+		},
+		"Garage": {
+			"name": "Garagem",
+			"removable": false,
+			"size": 17400
+		},
+        "Wallet": {
+            "name": "Banco",
+            "removable": false,
+            "size": 2000
+        },
+		"Twitter": {
+			"name": "Y",
+			"icon": "./assets/img/icons/apps/Birdy.jpg",
+			"description": "Notícias ao vivo, fofocas e brigas",
+			"removable": true,
+			"size": 256700,
+			"images": ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp", "7.webp", "8.webp"]
+		},
+		"Mail": {
+			"name": "E-mail",
+			"removable": false,
+			"size": 23200
+		},
+		"Services": {
+			"name": "Serviços",
+			"removable": false,
+			"size": 23200
+		},
+		"VoiceMemo": {
+			"name": "Gravador de voz",
+			"removable": false,
+			"size": 28200
+		},
+		"Instagram": {
+			"name": "InstaHills",
+			"icon": "./assets/img/icons/apps/InstaPic.jpg",
+			"description": "Compartilhe fotos e vídeos",
+			"removable": true,
+			"size": 223000,
+			"images": ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp", "7.webp"]
+		},
+		"Tinder": {
+			"name": "Relacionamentos",
+			"icon": "./assets/img/icons/apps/Spark.jpg",
+			"description": "Conheça novas pessoas",
+			"removable": true,
+			"size": 187500,
+			"images": ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp"]
+		},
+		"TikTok": {
+			"name": "TikHills",
+			"icon": "./assets/img/icons/apps/Trendy.jpg",
+			"description": "Compartilhe fotos e vídeos",
+			"removable": true,
+			"size": 223000,
+			"images": ["1.webp"]
+		},
+        "Browser": {
+            "name": "Browser",
+            "removable": false,
+            "size": 5123
+        }
+    },
+    "world_clock_locations": {
+        "New York": "America/New_York",
+        "London": "Europe/London",
+        "Paris": "Europe/Paris",
+        "Tokyo": "Asia/Tokyo",
+        "Sydney": "Australia/Sydney",
+        "Los Angeles": "America/Los_Angeles",
+        "New Delhi": "Asia/Kolkata",
+        "Hong Kong": "Asia/Hong_Kong",
+        "Rio de Janeiro": "America/Sao_Paulo",
+        "Mexico City": "America/Mexico_City",
+        "Cape Town": "Africa/Johannesburg",
+        "Stockholm": "Europe/Stockholm",
+        "Hawaii": "Pacific/Honolulu"
+    }
+}

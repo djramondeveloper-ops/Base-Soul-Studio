@@ -1,0 +1,28 @@
+EXTERIOR:
+
+Small gate to parking lot:
+prop_facgate_07
+
+Main big gate:
+prop_gate_tep_01_l
+prop_gate_tep_01_r
+
+Back escape small gate:
+prop_fnclink_03gate5
+
+INTERIOR:
+
+
+Main entrance:
+sempre_noel_observatory_door_1
+
+Roof entrance:
+sempre_noel_observatory_door_2
+
+Every other doors in interior:
+sempre_noel_observatory_door
+
+-- https://primeleaks.cc
+-- https://primeleaks.cc
+-- https://primeleaks.cc
+-- https://primeleaks.cc

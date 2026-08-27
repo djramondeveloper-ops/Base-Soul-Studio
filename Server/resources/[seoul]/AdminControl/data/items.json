@@ -1,0 +1,212 @@
+{
+    "camera": {
+        "description": "Câmera fotográfica.",
+        "category": "common",
+        "type": "Comum",
+        "_seoulSeed": "scripts",
+        "label": "Câmera",
+        "name": "Câmera",
+        "image": "camera.png",
+        "clientEvent": "useCamera",
+        "stack": false,
+        "close": true,
+        "item": "camera",
+        "eventType": "client",
+        "weight": 0.5
+    },
+    "WEAPON_PISTOL": {
+        "type": "Arma",
+        "vrpDurability": 1,
+        "oxDurability": 1,
+        "name": "Pistola",
+        "ammoname": "ammo-9",
+        "weaponKind": "weapon",
+        "throwable": true,
+        "vrpAmmo": "WEAPON_PISTOL_AMMO",
+        "item": "WEAPON_PISTOL",
+        "index": "WEAPON_PISTOL",
+        "weight": 1
+    },
+    "paintingj": {
+        "description": "",
+        "type": "use",
+        "index": "",
+        "item": "paintingj",
+        "weight": 0.5,
+        "name": "paintingj"
+    },
+    "drill": {
+        "description": "Furadeira",
+        "type": "use",
+        "index": "drill",
+        "item": "drill",
+        "weight": 0.5,
+        "name": "Drill"
+    },
+    "paintingh": {
+        "description": "",
+        "type": "use",
+        "index": "",
+        "item": "paintingh",
+        "weight": 0.5,
+        "name": "paintingh"
+    },
+    "itemdeteste": {
+        "description": "teste",
+        "type": "Comum",
+        "index": "itemdeteste",
+        "name": "itemdeteste",
+        "stack": true,
+        "close": true,
+        "item": "itemdeteste",
+        "eventType": "Client",
+        "weight": 1
+    },
+    "skate": {
+        "description": "Skate portátil.",
+        "category": "common",
+        "type": "Comum",
+        "_seoulSeed": "scripts",
+        "label": "Skate",
+        "name": "Skate",
+        "image": "skate.png",
+        "clientEvent": "skate",
+        "stack": false,
+        "close": true,
+        "item": "skate",
+        "eventType": "client",
+        "weight": 1.0
+    },
+    "diamond": {
+        "description": "",
+        "type": "use",
+        "index": "",
+        "item": "diamond",
+        "weight": 0,
+        "name": "Diamantes"
+    },
+    "paintinge": {
+        "description": "",
+        "type": "use",
+        "index": "",
+        "item": "paintinge",
+        "weight": 0.5,
+        "name": "paintinge"
+    },
+    "ammo-9": {
+        "weaponKind": "ammo",
+        "type": "Munição",
+        "index": "ammo-9",
+        "item": "ammo-9",
+        "weight": 0.01,
+        "name": "Munição 9mm"
+    },
+    "thermite_h": {
+        "description": "Termita para abrir trancas",
+        "type": "use",
+        "index": "thermite_h",
+        "item": "thermite_h",
+        "weight": 0.5,
+        "name": "Termita"
+    },
+    "yacht_drill": {
+        "description": "",
+        "type": "use",
+        "index": "",
+        "item": "yacht_drill",
+        "weight": 0.5,
+        "name": "Drill"
+    },
+    "rope": {
+        "description": "Corda para roleplay.",
+        "category": "common",
+        "type": "Comum",
+        "_seoulSeed": "scripts",
+        "label": "Corda",
+        "name": "Corda",
+        "image": "rope.png",
+        "clientEvent": "vrp_rope:toggleRope",
+        "stack": true,
+        "close": true,
+        "item": "rope",
+        "eventType": "client",
+        "weight": 0.5
+    },
+    "paintingf": {
+        "description": "",
+        "type": "use",
+        "index": "",
+        "item": "paintingf",
+        "weight": 0.5,
+        "name": "paintingf"
+    },
+    "paintingi": {
+        "description": "",
+        "type": "use",
+        "index": "",
+        "item": "paintingi",
+        "weight": 0.5,
+        "name": "paintingi"
+    },
+    "cutter": {
+        "description": "Cortador",
+        "type": "use",
+        "index": "cutter",
+        "item": "cutter",
+        "weight": 0.5,
+        "name": "cutter"
+    },
+    "WEAPON_FLASHBANG": {
+        "description": "Granada de luz e concussão.",
+        "category": "weapon",
+        "type": "Arma",
+        "_seoulSeed": "scripts",
+        "label": "Flashbang",
+        "name": "Flashbang",
+        "stack": true,
+        "throwable": true,
+        "close": true,
+        "item": "WEAPON_FLASHBANG",
+        "image": "WEAPON_FLASHBANG.png",
+        "weight": 0.6
+    },
+    "binoculars": {
+        "description": "Binóculos.",
+        "category": "common",
+        "type": "Comum",
+        "_seoulSeed": "scripts",
+        "label": "Binóculos",
+        "name": "Binóculos",
+        "image": "binoculars.png",
+        "clientEvent": "useBinoculos",
+        "stack": false,
+        "close": true,
+        "item": "binoculars",
+        "eventType": "client",
+        "weight": 0.4
+    },
+    "paintingg": {
+        "description": "",
+        "type": "use",
+        "index": "",
+        "item": "paintingg",
+        "weight": 0.5,
+        "name": "paintingg"
+    },
+    "hack_usb": {
+        "description": "",
+        "type": "use",
+        "index": "",
+        "item": "hack_usb",
+        "weight": 0.5,
+        "name": "Hack USB"
+    },
+    "bag": {
+        "description": "Mochila para roubo",
+        "type": "use",
+        "index": "bag",
+        "item": "bag",
+        "weight": 0.5,
+        "name": "Bag"
+    }
+}

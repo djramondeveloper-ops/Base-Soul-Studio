@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator NUI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="elevatorOverlay" class="elevator-overlay">
+        <section class="elevator-panel" aria-label="Painel do Elevador">
+            <header class="panel-header">
+                <div class="header-title-wrap">
+                    <div class="header-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" role="img">
+                            <path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 2v14h10V5H7Zm3.6 3.5a1.4 1.4 0 1 0-2.8 0 1.4 1.4 0 0 0 2.8 0Zm5.6 0a1.4 1.4 0 1 0-2.8 0 1.4 1.4 0 0 0 2.8 0ZM8.4 16l1.8-3h3.6l1.8 3h-1.9l-1.1-1.8-1.1 1.8H8.4Z"/>
+                        </svg>
+                    </div>
+                    <div class="header-title-text">
+                        <h1>Elevador</h1>
+                        <div id="powerStatus" class="status-right">
+                            <span id="powerDot" class="connection-dot"></span>
+                            <span id="powerText">Pronto para uso</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="closeBtn" class="icon-btn close" type="button" aria-label="Fechar painel">X</button>
+            </header>
+
+            <main class="panel-body">
+                <div id="floorList" class="floor-list"></div>
+            </main>
+
+            <footer class="panel-footer">
+                <div class="shortcuts-row">
+                    <span class="shortcut-pill">ESC</span>
+                    <span class="shortcut-text">Fechar painel</span>
+                </div>
+            </footer>
+        </section>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

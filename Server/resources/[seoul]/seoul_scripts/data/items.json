@@ -1,0 +1,71 @@
+[
+  {
+    "item": "skate",
+    "name": "Skate",
+    "label": "Skate",
+    "type": "Comum",
+    "category": "common",
+    "weight": 1.0,
+    "image": "skate.png",
+    "stack": false,
+    "close": true,
+    "clientEvent": "skate",
+    "eventType": "client",
+    "description": "Skate portátil."
+  },
+  {
+    "item": "rope",
+    "name": "Corda",
+    "label": "Corda",
+    "type": "Comum",
+    "category": "common",
+    "weight": 0.5,
+    "image": "rope.png",
+    "stack": true,
+    "close": true,
+    "clientEvent": "vrp_rope:toggleRope",
+    "eventType": "client",
+    "description": "Corda para roleplay."
+  },
+  {
+    "item": "camera",
+    "name": "Câmera",
+    "label": "Câmera",
+    "type": "Comum",
+    "category": "common",
+    "weight": 0.5,
+    "image": "camera.png",
+    "stack": false,
+    "close": true,
+    "clientEvent": "useCamera",
+    "eventType": "client",
+    "description": "Câmera fotográfica."
+  },
+  {
+    "item": "binoculars",
+    "name": "Binóculos",
+    "label": "Binóculos",
+    "type": "Comum",
+    "category": "common",
+    "weight": 0.4,
+    "image": "binoculars.png",
+    "stack": false,
+    "close": true,
+    "clientEvent": "useBinoculos",
+    "eventType": "client",
+    "description": "Binóculos."
+  },
+  {
+    "item": "WEAPON_FLASHBANG",
+    "name": "Flashbang",
+    "label": "Flashbang",
+    "type": "Arma",
+    "category": "weapon",
+    "weight": 0.6,
+    "image": "WEAPON_FLASHBANG.png",
+    "stack": true,
+    "close": true,
+    "throwable": true,
+    "description": "Granada de luz e concussão."
+  }
+]

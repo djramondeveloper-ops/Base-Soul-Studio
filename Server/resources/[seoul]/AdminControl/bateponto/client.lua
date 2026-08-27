@@ -1,0 +1,1 @@
+-- Bate-ponto desativado nesta v1 do AdminControl Seoul.

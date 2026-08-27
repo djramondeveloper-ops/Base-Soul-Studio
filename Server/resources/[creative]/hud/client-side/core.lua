@@ -1,0 +1,695 @@
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VRP
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Tunnel = module("vrp","lib/Tunnel")
+local Proxy = module("vrp","lib/Proxy")
+vRPS = Tunnel.getInterface("vRP")
+vRP = Proxy.getInterface("vRP")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CONNECTION
+-----------------------------------------------------------------------------------------------------------------------------------------
+Creative = {}
+Tunnel.bindInterface("hud",Creative)
+vSERVER = Tunnel.getInterface("hud")
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GLOBAL
+-----------------------------------------------------------------------------------------------------------------------------------------
+Radar = false
+Display = false
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- VARIABLES
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Hood = false
+local Gemstone = 0
+local Pause = false
+local Road = ""
+local Underwater = false
+local Crossing = ""
+local RegionRoad = ""
+local Weather = ""
+local LocationOverrideTop = nil
+local LocationOverrideBottom = nil
+local DangerAreasEnabled = true
+local DangerAreasAlways = false
+local DangerAreasStartHour = 22
+local DangerAreasEndHour = 6
+local DangerAreasSyncTimer = 0
+local ShouldShowHud
+
+if HudDangerConfig and HudDangerConfig.DangerAreas ~= nil then
+	DangerAreasEnabled = HudDangerConfig.DangerAreas and true or false
+end
+
+if HudDangerConfig and HudDangerConfig.DangerAreasAlways ~= nil then
+	DangerAreasAlways = HudDangerConfig.DangerAreasAlways and true or false
+end
+
+if HudDangerConfig and HudDangerConfig.DangerAreasStartHour ~= nil then
+	DangerAreasStartHour = parseInt(HudDangerConfig.DangerAreasStartHour) or 22
+end
+
+if HudDangerConfig and HudDangerConfig.DangerAreasEndHour ~= nil then
+	DangerAreasEndHour = parseInt(HudDangerConfig.DangerAreasEndHour) or 6
+end
+
+local function SyncDangerAreasConfig()
+	SendNUIMessage({
+		Action = "DangerAreasConfig",
+		Payload = {
+			Enabled = DangerAreasEnabled,
+			Always = DangerAreasAlways,
+			StartHour = DangerAreasStartHour,
+			EndHour = DangerAreasEndHour
+		}
+	})
+end
+
+local function GetDangerAreasPayload()
+	return {
+		Enabled = DangerAreasEnabled,
+		Always = DangerAreasAlways,
+		StartHour = DangerAreasStartHour,
+		EndHour = DangerAreasEndHour
+	}
+end
+
+local WeatherNames = {
+	EXTRASUNNY = "Ensolarado",
+	CLEAR = "Limpo",
+	NEUTRAL = "Neutro",
+	SMOG = "Névoa",
+	FOGGY = "Neblina",
+	OVERCAST = "Nublado",
+	CLOUDS = "Nuvens",
+	CLEARING = "Abrindo",
+	RAIN = "Chuva",
+	THUNDER = "Tempestade",
+	SNOW = "Neve",
+	BLIZZARD = "Nevasca",
+	SNOWLIGHT = "Neve Leve",
+	XMAS = "Natal",
+	HALLOWEEN = "Halloween"
+}
+
+-- Bolingbroke (prisao) fica na faixa de Y ~2450-2600.
+-- A partir daqui para cima sera considerado Norte.
+local REGION_DIVIDER_Y = 2450.0
+
+local function GetRegionName(Coords)
+	if (Coords["y"] or 0.0) >= REGION_DIVIDER_Y then
+		return "Norte"
+	end
+
+	return "Sul"
+end
+
+local function GetWeatherName()
+	local Current = tostring(GlobalState["Weather"] or "CLEAR")
+	return WeatherNames[Current] or Current
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PRINCIPAL
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Armour = 0
+local Health = 200
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THIRST
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Thirst = 100
+local ThirstTimer = 0
+local ThirstAmount = 180000
+local ThirstDelay = GetGameTimer()
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUNGER
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Hunger = 100
+local HungerTimer = 0
+local HungerAmount = 180000
+local HungerDelay = GetGameTimer()
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- STRESS
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Stress = 0
+local StressTimer = GetGameTimer()
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WANTED
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Wanted = 0
+local WantedMax = 0
+local WantedTimer = GetGameTimer()
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REPOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Repose = 0
+local ReposeMax = 0
+local ReposeTimer = GetGameTimer()
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- LUCK
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Luck = 0
+local LuckTimer = GetGameTimer()
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- DEXTERITY
+-----------------------------------------------------------------------------------------------------------------------------------------
+local Dexterity = 0
+local DexterityTimer = GetGameTimer()
+local ClockHours = -1
+local ClockMinutes = -1
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THREADTIMER
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	LoadMovement("move_m@injured")
+	Wait(1000)
+	SyncDangerAreasConfig()
+
+	while true do
+		if DangerAreasSyncTimer <= GetGameTimer() then
+			SyncDangerAreasConfig()
+			DangerAreasSyncTimer = GetGameTimer() + 5000
+		end
+
+		if LocalPlayer["state"]["Active"] then
+			local Pid = PlayerId()
+			local Ped = PlayerPedId()
+
+			if IsPauseMenuActive() then
+				if not Pause and Display then
+					Pause = true
+					SendNUIMessage({ Action = "Body", Payload = false })
+				end
+			else
+				if Display then
+					if Pause then
+						Pause = false
+						SendNUIMessage({ Action = "Body", Payload = ShouldShowHud() })
+					end
+
+					local Coords = GetEntityCoords(Ped)
+					local Armouring = GetPedArmour(Ped)
+					local Healing = GetEntityHealth(Ped) - 100
+					local MinRoad,MinCross = GetStreetNameAtCoord(Coords["x"],Coords["y"],Coords["z"])
+					local FullRoad = GetStreetNameFromHashKey(MinRoad)
+					local FullCross = GetStreetNameFromHashKey(MinCross)
+					local CurrentRegion = GetRegionName(Coords)
+					local CurrentWeather = GetWeatherName()
+
+					if GetEntityMaxHealth(Ped) ~= 200 then
+						if Health ~= parseInt(Healing * 0.66) then
+							Healing = parseInt(Healing * 0.66)
+
+							if Healing > 100 then
+								Healing = 100
+							end
+
+							SendNUIMessage({ Action = "Health", Payload = Healing })
+							Health = Healing
+						end
+					else
+						if Healing > 100 then
+							SetEntityHealth(Ped,200)
+							Healing = 100
+						end
+
+						if Health ~= Healing then
+							SendNUIMessage({ Action = "Health", Payload = Healing })
+							Health = Healing
+						end
+
+						if not IsPedSwimming(Ped) then
+							if Healing <= 30 and GetPedMovementClipset(Ped) ~= -650503762 then
+								LocalPlayer["state"]:set("Walk",false,false)
+								SetPedMovementClipset(Ped,"move_m@injured",0.5)
+							elseif Healing > 30 and GetPedMovementClipset(Ped) == -650503762 then
+								LocalPlayer["state"]:set("Walk",false,false)
+							end
+						end
+					end
+
+					if Armour ~= Armouring then
+						SendNUIMessage({ Action = "Armour", Payload = Armouring })
+						Armour = Armouring
+					end
+
+					local DisplayRoad = LocationOverrideTop or CurrentRegion
+					local RegionStreet = FullRoad ~= "" and FullRoad or FullCross
+					local DisplayCross = LocationOverrideTop and (LocationOverrideBottom or CurrentRegion) or RegionStreet
+
+					if RegionRoad ~= DisplayRoad then
+						SendNUIMessage({ Action = "Road", Payload = DisplayRoad })
+						RegionRoad = DisplayRoad
+					end
+
+					if DisplayCross ~= "" and Crossing ~= DisplayCross then
+						SendNUIMessage({ Action = "Crossing", Payload = DisplayCross })
+						Crossing = DisplayCross
+					end
+
+					if Weather ~= CurrentWeather then
+						SendNUIMessage({ Action = "Weather", Payload = CurrentWeather })
+						Weather = CurrentWeather
+					end
+
+					local CurrentHours = GlobalState["Hours"]
+					local CurrentMinutes = GlobalState["Minutes"]
+					if ClockHours ~= CurrentHours or ClockMinutes ~= CurrentMinutes then
+						SendNUIMessage({ Action = "Clock", Payload = { CurrentHours,CurrentMinutes } })
+						ClockHours = CurrentHours
+						ClockMinutes = CurrentMinutes
+					end
+				end
+			end
+
+			if Luck > 0 and LuckTimer <= GetGameTimer() then
+				Luck = Luck - 1
+				LuckTimer = GetGameTimer() + 1000
+
+				SendNUIMessage({ Action = "Luck", Payload = Luck })
+			end
+
+			if Dexterity > 0 and DexterityTimer <= GetGameTimer() then
+				Dexterity = Dexterity - 1
+				DexterityTimer = GetGameTimer() + 1000
+
+				SendNUIMessage({ Action = "Dexterity", Payload = Dexterity })
+			end
+
+			if Wanted > 0 and WantedTimer <= GetGameTimer() then
+				Wanted = Wanted - 1
+				WantedTimer = GetGameTimer() + 1000
+
+				SendNUIMessage({ Action = "Wanted", Payload = { Wanted,WantedMax } })
+			end
+
+			if Repose > 0 and ReposeTimer <= GetGameTimer() then
+				Repose = Repose - 1
+				ReposeTimer = GetGameTimer() + 1000
+
+				SendNUIMessage({ Action = "Repose", Payload = { Repose,ReposeMax } })
+			end
+
+			if GetEntityHealth(Ped) > 100 then
+				if Hunger <= 10 and HungerTimer <= GetGameTimer() then
+					ApplyDamageToPed(Ped,1,false)
+					HungerTimer = GetGameTimer() + 60000
+					TriggerEvent("Notify","Alimentação","Sofrendo com a <b>fome</b>.","fome",5000)
+				end
+
+				if Thirst <= 10 and ThirstTimer <= GetGameTimer() then
+					ApplyDamageToPed(Ped,1,false)
+					ThirstTimer = GetGameTimer() + 60000
+					TriggerEvent("Notify","Hidratação","Sofrendo com a <b>sede</b>.","sede",5000)
+				end
+
+				if Stress ~= 999 and Stress >= 50 and StressTimer <= GetGameTimer() then
+					AnimpostfxPlay("MenuMGIn")
+					SetTimeout(1000,function()
+						AnimpostfxStop("MenuMGIn")
+					end)
+
+					StressTimer = GetGameTimer() + 30000
+				end
+
+				if Hunger > 0 and HungerDelay <= GetGameTimer() then
+					Hunger = Hunger - 1
+					vRPS.DowngradeHunger()
+					HungerDelay = GetGameTimer() + HungerAmount
+
+					SendNUIMessage({ Action = "Hunger", Payload = Hunger })
+				end
+
+				if Thirst > 0 and ThirstDelay <= GetGameTimer() then
+					Thirst = Thirst - 1
+					vRPS.DowngradeThirst()
+					ThirstDelay = GetGameTimer() + ThirstAmount
+
+					SendNUIMessage({ Action = "Thirst", Payload = Thirst })
+				end
+
+				if IsPedSwimmingUnderWater(Ped) then
+					local IsScuba = GetPedConfigFlag(Ped,135)
+					local Remaining = GetPlayerUnderwaterTimeRemaining(Pid)
+					local Calculated = (Remaining / (IsScuba and 10000 or 10) * 100)
+
+					SendNUIMessage({ Action = "Oxygen", Payload = Calculated })
+					Underwater = true
+				else
+					if Underwater then
+						SendNUIMessage({ Action = "Oxygen" })
+						Underwater = false
+					end
+				end
+			end
+		end
+
+		Wait(1000)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ENTITYVELOCITY
+-----------------------------------------------------------------------------------------------------------------------------------------
+function EntityVelocity(Ped)
+	local Velocity = GetEntityVelocity(Ped)
+
+	return math.min(math.sqrt(Velocity["x"] * Velocity["x"] + Velocity["y"] * Velocity["y"] + Velocity["z"] * Velocity["z"]),10)
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ISLOCALPLAYERBAG
+-----------------------------------------------------------------------------------------------------------------------------------------
+local function IsLocalPlayerBag(BagName)
+	return BagName == ("player:%s"):format(GetPlayerServerId(PlayerId()))
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- SHOULDSHOWHUD
+-----------------------------------------------------------------------------------------------------------------------------------------
+ShouldShowHud = function()
+	return Display and not Pause and not LocalPlayer["state"]["inAppearance"]
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADDSTATEBAGCHANGEHANDLER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddStateBagChangeHandler("Passport",nil,function(Name,Key,Value)
+	if not IsLocalPlayerBag(Name) then
+		return
+	end
+
+	SendNUIMessage({ Action = "Passport", Payload = Value })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADDSTATEBAGCHANGEHANDLER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddStateBagChangeHandler("Players",nil,function(Name,Key,Value)
+	SendNUIMessage({ Action = "Players", Payload = Value })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADDSTATEBAGCHANGEHANDLER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddStateBagChangeHandler("Safezone",nil,function(Name,Key,Value)
+	if not IsLocalPlayerBag(Name) then
+		return
+	end
+
+	SendNUIMessage({ Action = "Safezone", Payload = (Value and true or false) })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- ADDSTATEBAGCHANGEHANDLER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddStateBagChangeHandler("inAppearance",nil,function(Name,Key,Value)
+	if not IsLocalPlayerBag(Name) then
+		return
+	end
+
+	if Value then
+		SendNUIMessage({ Action = "LogoOnly", Payload = false })
+		SendNUIMessage({ Action = "Body", Payload = false })
+	else
+		SendNUIMessage({ Action = "Body", Payload = ShouldShowHud() })
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- INITHUDSTATE
+-----------------------------------------------------------------------------------------------------------------------------------------
+CreateThread(function()
+	Wait(1500)
+
+	local Passport = LocalPlayer["state"]["Passport"]
+	if Passport then
+		SendNUIMessage({ Action = "Passport", Payload = Passport })
+	end
+
+	SendNUIMessage({ Action = "Safezone", Payload = (LocalPlayer["state"]["Safezone"] and true or false) })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:VOIP
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("hud:Voip",function(Number)
+	local Target = { "BAIXO","NORMAL","MÉDIO","ALTO" }
+
+	SendNUIMessage({ Action = "Voip", Payload = Target[Number] })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:VOICE
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("hud:Voice",function(Status)
+	SendNUIMessage({ Action = "Voice", Payload = Status })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:WANTED
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Wanted")
+AddEventHandler("hud:Wanted",function(Seconds)
+	WantedMax = Seconds
+	Wanted = Seconds
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- WANTED
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("Wanted",function()
+	return Wanted > 0 and true or false
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:REPOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Repose")
+AddEventHandler("hud:Repose",function(Seconds)
+	ReposeMax = Seconds
+	Repose = Seconds
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- REPOSE
+-----------------------------------------------------------------------------------------------------------------------------------------
+exports("Repose",function()
+	return Repose > 0 and true or false
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:VIDEO
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Video")
+AddEventHandler("hud:Video",function(Code)
+	if Code then
+		SetNuiFocus(true,false)
+		SendNUIMessage({ Action = "Body", Payload = true })
+		SendNUIMessage({ Action = "Video", Payload = Code })
+	else
+		SendNUIMessage({ Action = "Body", Payload = Display })
+		SendNUIMessage({ Action = "Video" })
+		SetNuiFocus(false,false)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:ACTIVE
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("hud:Active",function(Status)
+	Display = Status
+	SendNUIMessage({ Action = "Body", Payload = ShouldShowHud() })
+	SyncDangerAreasConfig()
+
+	if IsMinimapRendering() then
+		DisplayRadar(false)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:LOGOONLY
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("hud:LogoOnly",function(Status)
+	SendNUIMessage({ Action = "LogoOnly", Payload = (Status and true or false) })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterCommand("hud",function()
+	Display = not Display
+	SendNUIMessage({ Action = "Body", Payload = ShouldShowHud() })
+	SyncDangerAreasConfig()
+
+	if IsMinimapRendering() then
+		DisplayRadar(false)
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:MENU
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("hud:Menu",function()
+	SendNUIMessage({ Action = "Menu", Payload = true })
+	SetNuiFocus(true,true)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- CLOSEMENU
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNUICallback("CloseMenu",function(Data,Callback)
+	ExecuteCommand("PauseBreak")
+	SetNuiFocus(false,false)
+
+	Callback(true)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PLAYDANGERSOUND
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNUICallback("PlayDangerSound",function(Data,Callback)
+	local Mode = Data and Data["Mode"] or "enter"
+
+	if Mode == "exit" then
+		TriggerEvent("sounds:playSound","notify-verde","verde",1.0,false)
+		TriggerEvent("Notify","Região","Você saiu da área perigosa.","verde",5000)
+	else
+		TriggerEvent("sounds:playSound","notify-amarelo","amarelo",1.0,false)
+		TriggerEvent("Notify","Região","Você entrou em uma área perigosa.","amarelo",5000)
+	end
+
+	Callback(true)
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- GETDANGERAREASCONFIG
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNUICallback("GetDangerAreasConfig",function(Data,Callback)
+	Callback(GetDangerAreasPayload())
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:RADAR
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Radar")
+AddEventHandler("hud:Radar",function()
+	Radar = not Radar
+
+	TriggerEvent("inventory:Notify","Sucesso","Mapa adaptativo "..(Radar and "ativado" or "desativado")..".","verde")
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:RADAROFF
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Radaroff")
+AddEventHandler("hud:Radaroff",function()
+	Radar = false
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- PROGRESS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("Progress")
+AddEventHandler("Progress",function(Message,Timer)
+	SendNUIMessage({ Action = "Progress", Payload = Timer - 300 })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:THIRST
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Thirst")
+AddEventHandler("hud:Thirst",function(Number)
+	if Thirst ~= Number then
+		SendNUIMessage({ Action = "Thirst", Payload = Number })
+		Thirst = Number
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:HUNGER
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Hunger")
+AddEventHandler("hud:Hunger",function(Number)
+	if Hunger ~= Number then
+		SendNUIMessage({ Action = "Hunger", Payload = Number })
+		Hunger = Number
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:STRESS
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Stress")
+AddEventHandler("hud:Stress",function(Number)
+	if Stress ~= Number then
+		SendNUIMessage({ Action = "Stress", Payload = Number })
+		Stress = Number
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:LUCK
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Luck")
+AddEventHandler("hud:Luck",function(Seconds)
+	Luck = Seconds
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:DEXTERITY
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Dexterity")
+AddEventHandler("hud:Dexterity",function(Seconds)
+	Dexterity = Seconds
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:ADDGEMSTONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:AddGemstone")
+AddEventHandler("hud:AddGemstone",function(Number)
+	Gemstone = Gemstone + Number
+
+	SendNUIMessage({ Action = "Gemstone", Payload = Gemstone })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:REMOVEGEMSTONE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:RemoveGemstone")
+AddEventHandler("hud:RemoveGemstone",function(Number)
+	Gemstone = Gemstone - Number
+
+	if Gemstone < 0 then
+		Gemstone = 0
+	end
+
+	SendNUIMessage({ Action = "Gemstone", Payload = Gemstone })
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUNGER
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Hunger",function(Value)
+	HungerAmount = Value
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- THIRST
+-----------------------------------------------------------------------------------------------------------------------------------------
+AddEventHandler("Thirst",function(Value)
+	ThirstAmount = Value
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:HOOD
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:Hood")
+AddEventHandler("hud:Hood",function()
+	if Hood then
+		DoScreenFadeIn(2500)
+		Hood = false
+	else
+		DoScreenFadeOut(0)
+		Hood = true
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:SETFREQUENCY
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:setFrequency")
+AddEventHandler("hud:setFrequency",function(Frequency)
+	if Frequency and tostring(Frequency) ~= "" then
+		SendNUIMessage({ Action = "Frequency", Payload = Frequency })
+	else
+		SendNUIMessage({ Action = "Frequency" })
+	end
+end)
+-----------------------------------------------------------------------------------------------------------------------------------------
+-- HUD:LOCATIONOVERRIDE
+-----------------------------------------------------------------------------------------------------------------------------------------
+RegisterNetEvent("hud:LocationOverride")
+AddEventHandler("hud:LocationOverride",function(TopText,BottomText)
+	if TopText and tostring(TopText) ~= "" then
+		LocationOverrideTop = tostring(TopText)
+		LocationOverrideBottom = BottomText and tostring(BottomText) or nil
+
+		if RegionRoad ~= LocationOverrideTop then
+			SendNUIMessage({ Action = "Road", Payload = LocationOverrideTop })
+			RegionRoad = LocationOverrideTop
+		end
+
+		local DisplayCross = LocationOverrideBottom or Crossing
+		if DisplayCross and DisplayCross ~= "" and Crossing ~= DisplayCross then
+			SendNUIMessage({ Action = "Crossing", Payload = DisplayCross })
+			Crossing = DisplayCross
+		end
+	else
+		LocationOverrideTop = nil
+		LocationOverrideBottom = nil
+	end
+end)

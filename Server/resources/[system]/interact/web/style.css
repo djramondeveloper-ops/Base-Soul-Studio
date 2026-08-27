@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  font-size: 1vh;
+}
+
+body {
+  user-select: none;
+  white-space: nowrap;
+  margin: 0;
+  overflow: hidden;
+  color: whitesmoke;
+
+  --bg-color: rgb(25, 25, 25, 0.85);
+  --theme-color: rgb(155, 89, 182, 0.8);
+  --theme-color-soft: rgb(155, 89, 182, 0.35);
+
+  transition: opacity 200ms linear;
+}
+
+p {
+  margin: 0;
+}
+
+#hidden-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2rem;
+}
+
+#container {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 0.6rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#options-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: max-content;
+  gap: 0.3rem;
+}
+
+.option-container {
+  color: var(--color-default);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  vertical-align: middle;
+  transition: 300ms;
+  transform-origin: left top;
+  scale: 1;
+  height: 2rem;
+  padding: 0.75rem;
+  top: 0;
+  width: 100%;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  border: 1px solid transparent;
+  background: linear-gradient(
+    90deg,
+    rgba(12, 18, 22, 0.19) 0%,
+    rgba(12, 18, 22, 0.55) 100%
+  );
+}
+
+.animated-background {
+  position: absolute;
+  height: 100%;
+  width: 1%;
+  /* Default state: collapsed */
+  z-index: 1;
+  transition: width 250ms ease-in-out;
+  /* Smooth transition for both directions */
+}
+
+.option-container.highlighted {
+  border: 1px solid var(--theme-color);
+  background: radial-gradient(
+      66.02% 272.58% at 50% 100%,
+      var(--theme-color-soft) 0%,
+      transparent 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(12, 18, 22, 0.19) 0%,
+      rgba(12, 18, 22, 0.55) 100%
+    );
+  transform: scale(1.02);
+  transition: border 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    background 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.option-container.highlighted .option-label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.option-container.highlighted .option-detail {
+  opacity: 1;
+}
+
+.option-container.highlighted .option-arrow {
+  opacity: 1;
+}
+
+.option-label {
+  font-family: "Kanit", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+  width: 100%;
+  z-index: 2;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.option-detail {
+  position: absolute;
+  right: -0.8rem;
+  top: -0.75rem;
+  opacity: 0;
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 1.6rem;
+  height: 1.8rem;
+  background-color: var(--theme-color);
+  -webkit-mask: url("./assets/option-detail.svg") center / contain no-repeat;
+  mask: url("./assets/option-detail.svg") center / contain no-repeat;
+}
+
+.option-arrow {
+  opacity: 0;
+  position: absolute;
+  left: -0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 1.25rem;
+  height: 1.7rem;
+  background-color: var(--theme-color);
+  -webkit-mask: url("./assets/arrow.svg") center / contain no-repeat;
+  mask: url("./assets/arrow.svg") center / contain no-repeat;
+}
+
+#interact-container {
+  position: relative;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.1rem;
+  overflow: hidden;
+}
+
+#interact-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 30, 30, 0.75);
+  -webkit-mask: url("./assets/key-bg.svg") center / contain no-repeat;
+  mask: url("./assets/key-bg.svg") center / contain no-repeat;
+}
+
+#interact-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0%;
+  transition: height 0ms;
+  z-index: 1;
+  background-color: var(--theme-color);
+  -webkit-mask: url("./assets/key-progress.svg") bottom / 100% 3.5rem no-repeat;
+  mask: url("./assets/key-progress.svg") bottom / 100% 3.5rem no-repeat;
+  /* animation: progress 1000ms linear infinite; */
+}
+
+#interact-key {
+  font-size: 1.5rem;
+  position: absolute;
+  color: #0c1216;
+  width: 100%;
+  height: 100%;
+  font-family: "Kanit", sans-serif;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes progress {
+  0% {
+    height: 0%;
+  }
+
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes swipe {
+  0% {
+    /* top: 55%; */
+    opacity: 0;
+  }
+
+  100% {
+    /* top: 50%; */
+    opacity: 1;
+  }
+}

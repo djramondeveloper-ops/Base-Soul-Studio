@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<Dat54>
+  <Version value="7314721"/>
+  <ContainerPaths>
+    <Item>audiodirectory\basic</Item>
+  </ContainerPaths>
+  <Items>
+    <Item type="SimpleSound">
+      <Name>rcore_basic_lock_sp</Name>
+      <Header>
+        <Flags value="0x00008004"/>
+        <Volume value="200"/>
+        <Category>scripted</Category>
+      </Header>
+      <ContainerName>audiodirectory/basic</ContainerName>
+      <FileName>rcore_basic_lock</FileName>
+      <WaveSlotNum value="0"/>
+    </Item>
+    <Item type="SimpleSound">
+      <Name>rcore_basic_unlock_sp</Name>
+      <Header>
+        <Flags value="0x00008004"/>
+        <Volume value="200"/>
+        <Category>scripted</Category>
+      </Header>
+      <ContainerName>audiodirectory/basic</ContainerName>
+      <FileName>rcore_basic_unlock</FileName>
+      <WaveSlotNum value="0"/>
+    </Item>
+    <Item type="SimpleSound">
+      <Name>rcore_basic_handcuff_sp</Name>
+      <Header>
+        <Flags value="0x00008004"/>
+        <Volume value="200"/>
+        <Category>scripted</Category>
+      </Header>
+      <ContainerName>audiodirectory/basic</ContainerName>
+      <FileName>rcore_basic_handcuff</FileName>
+      <WaveSlotNum value="0"/>
+    </Item>
+    <Item type="SoundSet">
+      <Name>rcore_police</Name>
+      <Header>
+        <Flags value="0xAAAAAAAA"/>
+      </Header>
+      <SoundSets>
+        <Item>
+          <ScriptName>rcore_basic_lock</ScriptName>
+          <ChildSound>rcore_basic_lock_sp</ChildSound>
+        </Item>
+        <Item>
+          <ScriptName>rcore_basic_unlock</ScriptName>
+          <ChildSound>rcore_basic_unlock_sp</ChildSound>
+        </Item>
+        <Item>
+          <ScriptName>rcore_basic_handcuff</ScriptName>
+          <ChildSound>rcore_basic_handcuff_sp</ChildSound>
+        </Item>
+      </SoundSets>
+    </Item>
+  </Items>
+</Dat54>

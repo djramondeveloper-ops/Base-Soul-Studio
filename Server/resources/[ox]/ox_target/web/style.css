@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --color-default: #ffffff;
+  --color-hover: #ffffff;
+  --seoul-primary: #5bb894;
+  --seoul-primary-rgb: 91, 184, 148;
+  --seoul-primary-soft: rgba(var(--seoul-primary-rgb), 0.38);
+  --seoul-primary-bg: rgba(var(--seoul-primary-rgb), 0.32);
+  --seoul-primary-border: rgba(var(--seoul-primary-rgb), 0.92);
+}
+
+body {
+  visibility: hidden;
+  user-select: none;
+  white-space: nowrap;
+  margin: 0;
+  user-select: none;
+  overflow: hidden;
+}
+
+p {
+  margin: 0;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 40;
+}
+
+#eye {
+  position: absolute;
+  font-size: 5;
+  top: 50.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: var(--seoul-primary);
+}
+
+.eye-hover {
+  fill: var(--seoul-primary);
+}
+
+/* Seoul: modo olho limpo — remove a bola/hexágono grande em volta do target. */
+#hex::before {
+  display: none !important;
+  content: "" !important;
+}
+
+#hex {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+#eye svg {
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(0 0 6px rgba(var(--seoul-primary-rgb), 0.85));
+}
+
+#options-wrapper {
+  position: absolute;
+  top: calc(48.4%);
+  left: calc(50% + 20pt);
+}
+
+.option-container {
+  color: var(--color-default);
+  display: flex;
+  flex-direction: row;
+  justify-content: Flex start;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--seoul-primary-rgb), 0.34) 0%,
+    rgba(var(--seoul-primary-rgb), 0.27) 66%,
+    rgba(0, 0, 0, 0.40) 100%
+  );
+  border-radius: 5px;
+  font-size: 12pt;
+  line-height: 50pt;
+  font-family: "Nunito";
+  vertical-align: middle;
+  transition: 300ms;
+  transform-origin: left top;
+  scale: 1;
+  height: 25pt;
+  margin: 5pt;
+  margin-top: 6;
+  padding-right: 1vw;
+}
+
+.option-container:hover {
+  background: rgba(var(--seoul-primary-rgb), 0.72);
+  border-radius: 5px;
+  transform-origin: left top;
+  box-shadow: 0px 0px 15px 3px rgba(var(--seoul-primary-rgb), 0.70);
+  color: var(--color-default);
+  margin-left: 4pt;
+}
+
+.option-icon {
+  font-size: 12pt;
+  line-height: 22pt;
+  width: 14pt;
+  margin: 7pt;
+  padding-left: 3px;
+  padding-right: 3.5px;
+  color: var(--seoul-primary);
+}
+
+.option-label {
+  font-weight: 500;
+}

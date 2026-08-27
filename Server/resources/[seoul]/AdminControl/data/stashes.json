@@ -1,0 +1,113 @@
+[
+    {
+        "slots": 72,
+        "webhook": "",
+        "groups": "police",
+        "label": "Bau geral policial",
+        "id": "policelocker",
+        "coords": {
+            "y": -429.3596496582031,
+            "x": 86.2137222290039,
+            "z": 41.624755859375
+        },
+        "weight": 50000,
+        "owner": false
+    },
+    {
+        "label": "Bau geral Hospital",
+        "slots": 70,
+        "groups": {
+            "ambulance": 0
+        },
+        "owner": false,
+        "id": "emslocker",
+        "coords": {
+            "y": -320.2200012207031,
+            "x": -435.760009765625,
+            "z": 34.91999816894531
+        },
+        "weight": 70000,
+        "webhook": ""
+    },
+    {
+        "label": "Bau Bahamas",
+        "slots": 72,
+        "groups": {
+            "Bahamas": 0
+        },
+        "owner": false,
+        "id": "bahamaslocker",
+        "coords": {
+            "y": 2069.889892578125,
+            "x": -1884.3399658203127,
+            "z": 145.5800018310547
+        },
+        "weight": 50000,
+        "webhook": ""
+    },
+    {
+        "label": "Bau Milicia",
+        "webhook": "",
+        "groups": {
+            "Milicia": 0,
+            "MiliciaLider": 0
+        },
+        "slots": 72,
+        "id": "milicialocker",
+        "coords": {
+            "x": 671.2596435546875,
+            "y": 1052.8995361328125,
+            "z": 281.1830139160156
+        },
+        "weight": 50000,
+        "owner": false
+    },
+    {
+        "label": "Bau Vanilla",
+        "slots": 72,
+        "groups": {
+            "Vanilla": 0
+        },
+        "owner": false,
+        "id": "vanillalocker",
+        "coords": {
+            "y": -1290.8944091796875,
+            "x": 90.03656005859375,
+            "z": 29.32162094116211
+        },
+        "weight": 50000,
+        "webhook": ""
+    },
+    {
+        "label": "Bau Hospital",
+        "slots": 72,
+        "groups": {
+            "ambulance": 0
+        },
+        "owner": false,
+        "id": "hospitallocker",
+        "coords": {
+            "y": -1562.8282470703125,
+            "x": 1139.909912109375,
+            "z": 35.38052368164062
+        },
+        "weight": 50000,
+        "webhook": ""
+    },
+    {
+        "label": "Bau Comando Geral",
+        "slots": 50,
+        "groups": {
+            "police": 10
+        },
+        "owner": false,
+        "id": "Registered-12",
+        "coords": {
+            "y": -408.36669921875,
+            "x": 48.3010139465332,
+            "z": 39.14365768432617
+        },
+        "weight": 50000,
+        "webhook": ""
+    }
+]
