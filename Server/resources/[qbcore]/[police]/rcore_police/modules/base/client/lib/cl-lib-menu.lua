@@ -275,7 +275,17 @@ function UI.CreateMenu(self, name, label, data, open)
             if not Framework then return error("Frontend - failed to create menu, esx_menu_list or esx_context not hooked") end
             UI:ParseData(data, function() dbg.info("Opened menu named [%s]", self.currentName) end)
         elseif Config.Menu == Menu.RCORE then
-            UI:ParseData(data, function() dbg.info("Opened menu named [%s]", self.currentName) end)
+            UI:ParseData(data, function(formatted)
+                if not formatted then
+                    return dbg.critical("Frontend - failed to format RCORE menu [%s]", self.currentName)
+                end
+                UI.ContextMenu({
+                    title = label,
+                    options = formatted,
+                    showState = true
+                })
+                dbg.info("Opened menu named [%s]", self.currentName)
+            end)
         elseif Config.Menu == Menu.NONE or Config.Menu == nil then
             UI:CreateMenuStandalone(name, label, data, open)
         end

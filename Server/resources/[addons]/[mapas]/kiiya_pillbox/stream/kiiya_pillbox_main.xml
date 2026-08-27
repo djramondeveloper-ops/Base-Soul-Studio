@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureDictionary>
+ <Item>
+  <Name>tl_v_iaa_facility_wall1_s</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_iaa_facility_wall1_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_fbiprinter1</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X256, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>km_v_fbiprinter1.dds</FileName>
+ </Item>
+ <Item>
+  <Name>xj_v_garagepanels_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="9" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>xj_v_garagepanels_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_fbideskstuff1</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X256, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>km_v_fbideskstuff1.dds</FileName>
+ </Item>
+ <Item>
+  <Name>t_white_plaster_Specular</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>t_white_plaster_Specular.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_fbicomputer1</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X256, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>km_v_fbicomputer1.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_psycheoffice_wall1</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_psycheoffice_wall1.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_cashdepot_door_maintenance</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_cashdepot_door_maintenance.dds</FileName>
+ </Item>
+ <Item>
+  <Name>xj_v_newpebblesdlc01_s</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="9" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>xj_v_newpebblesdlc01_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_fbicables</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>Y64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>km_v_fbicables.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_dlc_ch_casino_details_04</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_dlc_ch_casino_details_04.dds</FileName>
+ </Item>
+ <Item>
+  <Name>mh_v_aph_floormarble2_d</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>mh_v_aph_floormarble2_d.dds</FileName>
+ </Item>
+ <Item>
+  <Name>dlc19_xj_tiles_01_ab</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>dlc19_xj_tiles_01_ab.dds</FileName>
+ </Item>
+ <Item>
+  <Name>k_lamp</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="4" />
+  <Height value="4" />
+  <MipLevels value="3" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>k_lamp.dds</FileName>
+ </Item>
+ <Item>
+  <Name>t_pill_white_plaster_BaseColor</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>t_pill_white_plaster_BaseColor.dds</FileName>
+ </Item>
+ <Item>
+  <Name>kiiya_pillbox_screen2</Name>
+  <Unk32 value="0" />
+  <Usage>UNKNOWN</Usage>
+  <UsageFlags>X32, X64, X128, X512</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>kiiya_pillbox_screen2.dds</FileName>
+ </Item>
+ <Item>
+  <Name>Inst_Plastered_Wall_06_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X1024, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>Inst_Plastered_Wall_06_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>iedlc_panels01_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>iedlc_panels01_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>bh1_13_showroom_glass</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="4" />
+  <Height value="4" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>bh1_13_showroom_glass.dds</FileName>
+ </Item>
+ <Item>
+  <Name>bh1_13_showroom_glass_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="4" />
+  <Height value="4" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>bh1_13_showroom_glass_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_dlc_vw_casino_metal_beams_01_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>Y512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>tl_dlc_vw_casino_metal_beams_01_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_dlc_ch_casino_metal_01_s</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_dlc_ch_casino_metal_01_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_apartmentmid_floor_wood</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_apartmentmid_floor_wood.dds</FileName>
+ </Item>
+ <Item>
+  <Name>mh_v_aph_floormarble4_d</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>mh_v_aph_floormarble4_d.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_bwallpaint1</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>km_v_bwallpaint1.dds</FileName>
+ </Item>
+ <Item>
+  <Name>env_noise_concrete</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X64, Y64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="6" />
+  <Format>D3DFMT_ATI2</Format>
+  <FileName>env_noise_concrete.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_dlc_ch_casino_details_04_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_dlc_ch_casino_details_04_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>ak_dlc_ex1_woodfloor_lightbrown</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>ak_dlc_ex1_woodfloor_lightbrown.dds</FileName>
+ </Item>
+ <Item>
+  <Name>xj_v_newpebblesdlc01_d</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>xj_v_newpebblesdlc01_d.dds</FileName>
+ </Item>
+ <Item>
+  <Name>t_pill_white_plaster_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="9" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>t_pill_white_plaster_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>bh1_13_showroom_glass_s</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="4" />
+  <Height value="4" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>bh1_13_showroom_glass_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>gz_v_fa_carpet03</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>gz_v_fa_carpet03.dds</FileName>
+ </Item>
+ <Item>
+  <Name>t_grey_plaster_BaseColor</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="9" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>t_grey_plaster_BaseColor.dds</FileName>
+ </Item>
+ <Item>
+  <Name>t_pill_blue_plaster_BaseColor</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>t_pill_blue_plaster_BaseColor.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_cashdepot_door_maintenance_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_cashdepot_door_maintenance_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>dt1_06_doorsignhosp_ddt1_06_doorsignhosp_a</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X64, Y64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="6" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>dt1_06_doorsignhosp_ddt1_06_doorsignhosp_a.dds</FileName>
+ </Item>
+ <Item>
+  <Name>dlc19_plaster01_n</Name>
+  <Unk32 value="0" />
+  <Usage>UNKNOWN</Usage>
+  <UsageFlags>0</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="1024" />
+  <Height value="1024" />
+  <MipLevels value="9" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>dlc19_plaster01_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>mh_v_firedoorkeepshut_d</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="6" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>mh_v_firedoorkeepshut_d.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_dlc_ch_casino_details_02</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="16" />
+  <Height value="16" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>tl_dlc_ch_casino_details_02.dds</FileName>
+ </Item>
+ <Item>
+  <Name>os_v_fbicomputer1</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X256, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>os_v_fbicomputer1.dds</FileName>
+ </Item>
+ <Item>
+  <Name>t_pill_blue_plaster_Normal</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="9" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>t_pill_blue_plaster_Normal.dds</FileName>
+ </Item>
+ <Item>
+  <Name>dlc19_xj_tiles_01_sp</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="9" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>dlc19_xj_tiles_01_sp.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_dlc_vw_casino_metal_beams_01_s</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>Y512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>tl_dlc_vw_casino_metal_beams_01_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>t_white_plaster_BaseColor</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>t_white_plaster_BaseColor.dds</FileName>
+ </Item>
+ <Item>
+  <Name>ak_dlc_Ex_NormalBlank_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="4" />
+  <Height value="4" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>ak_dlc_Ex_NormalBlank_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_bank2_flag</Name>
+  <Unk32 value="0" />
+  <Usage>UNKNOWN</Usage>
+  <UsageFlags>X64, Y64</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="128" />
+  <MipLevels value="6" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_bank2_flag.dds</FileName>
+ </Item>
+ <Item>
+  <Name>mh_v_aph_floormarble_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="4" />
+  <Height value="4" />
+  <MipLevels value="1" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>mh_v_aph_floormarble_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>dlc19_xj_tiles_01_nm</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>dlc19_xj_tiles_01_nm.dds</FileName>
+ </Item>
+ <Item>
+  <Name>xj_v_newpebblesdlc01_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>xj_v_newpebblesdlc01_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>km_v_fbimonitor</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>km_v_fbimonitor.dds</FileName>
+ </Item>
+ <Item>
+  <Name>new_com_bank_drip01_abnew_com_bank_drip01_al</Name>
+  <Unk32 value="0" />
+  <Usage>UNKNOWN</Usage>
+  <UsageFlags>0</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>new_com_bank_drip01_abnew_com_bank_drip01_al.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_psycheoffice_wall1_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_psycheoffice_wall1_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_office_lamps2</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_office_lamps2.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_psycheoffice_ceiling</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="7" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_psycheoffice_ceiling.dds</FileName>
+ </Item>
+ <Item>
+  <Name>Tex_Plastic_01_D</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="9" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>Tex_Plastic_01_D.dds</FileName>
+ </Item>
+ <Item>
+  <Name>t_grey_plaster_Specular</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="128" />
+  <Height value="128" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>t_grey_plaster_Specular.dds</FileName>
+ </Item>
+ <Item>
+  <Name>tl_v_iaa_facility_wall1</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>tl_v_iaa_facility_wall1.dds</FileName>
+ </Item>
+ <Item>
+  <Name>mh_v_aph_floormarble3_d</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>mh_v_aph_floormarble3_d.dds</FileName>
+ </Item>
+ <Item>
+  <Name>mh_v_scresbolts01_d</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="64" />
+  <Height value="64" />
+  <MipLevels value="5" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>mh_v_scresbolts01_d.dds</FileName>
+ </Item>
+ <Item>
+  <Name>ak_dlc_ex1_Chrome</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="256" />
+  <Height value="256" />
+  <MipLevels value="9" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>ak_dlc_ex1_Chrome.dds</FileName>
+ </Item>
+ <Item>
+  <Name>iedlc_panels04</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>iedlc_panels04.dds</FileName>
+ </Item>
+ <Item>
+  <Name>gz_dlc_ex1_woodfloor01_s</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, X64, X128, X512, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="8" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>gz_dlc_ex1_woodfloor01_s.dds</FileName>
+ </Item>
+ <Item>
+  <Name>mh_v_scresbolts01_n</Name>
+  <Unk32 value="128" />
+  <Usage>DEFAULT</Usage>
+  <UsageFlags>X32, UNK24</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="64" />
+  <Height value="64" />
+  <MipLevels value="5" />
+  <Format>D3DFMT_DXT1</Format>
+  <FileName>mh_v_scresbolts01_n.dds</FileName>
+ </Item>
+ <Item>
+  <Name>t_lspd_logo_3</Name>
+  <Unk32 value="0" />
+  <Usage>UNKNOWN</Usage>
+  <UsageFlags>X64, Y64, X256, Y512</UsageFlags>
+  <ExtraFlags value="0" />
+  <Width value="512" />
+  <Height value="512" />
+  <MipLevels value="10" />
+  <Format>D3DFMT_DXT5</Format>
+  <FileName>t_lspd_logo_3.dds</FileName>
+ </Item>
+</TextureDictionary>
