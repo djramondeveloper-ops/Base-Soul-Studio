@@ -10,34 +10,36 @@
 
 Utils = {}
 function ConvertPlayerJobToStructure(data)
-    local retval = {}
+    data = type(data) == 'table' and data or {}
+    local gradeData = type(data.grade) == 'table' and data.grade or {}
+
     if Config.Framework == Framework.ESX then
-        retval = {
-            group = data?.name or 'none',
-            grade = data?.grade or 0,
-            grade_name = data?.grade_name or 'none',
+        return {
+            group = data.name or 'none',
+            grade = tonumber(data.grade) or tonumber(data.grade_level) or 0,
+            grade_name = data.grade_name or data.gradeName or 'none',
         }
     elseif IS_QB[Config.Framework] then
-        retval = {
-            group = data?.name or 'none',
-            grade = data?.grade_level or data.grade.level or 0,
-            grade_name = data?.grade_name or data.grade.name or 'none',
+        return {
+            group = data.name or 'none',
+            grade = tonumber(data.grade_level) or tonumber(gradeData.level) or tonumber(data.grade) or 0,
+            grade_name = data.grade_name or gradeData.name or data.gradeName or 'none',
         }
     elseif Config.Framework == Framework.NDCore then
-        retval = {
-            group = data?.name or 'none',
-            grade = data?.rank or 0,
-            grade_name = data?.gradeName or 'none',
-        }
-    else
-        retval = {
-            group = data?.name or 'none',
-            grade = data?.grade or 0,
-            grade_name = data?.grade_name or 'none',
+        return {
+            group = data.name or 'none',
+            grade = tonumber(data.rank) or tonumber(data.grade) or 0,
+            grade_name = data.gradeName or data.grade_name or 'none',
         }
     end
-    return retval
+
+    return {
+        group = data.name or 'none',
+        grade = tonumber(data.grade) or tonumber(data.grade_level) or 0,
+        grade_name = data.grade_name or data.gradeName or 'none',
+    }
 end
+
 Utils.Log = function(title, description, color)
     local embedData = {
         {

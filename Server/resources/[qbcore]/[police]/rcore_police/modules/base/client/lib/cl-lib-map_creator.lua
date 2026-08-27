@@ -4,7 +4,7 @@
 --  Original: 1178 lines → Cleaned: 350 lines
 -- =====================================================
 
-ValidMapData = {
+local MapCreatorValidResources = {
     rcore_prison_assets = true,
     rcore_police_assets = true,
     rcore_banners_assets = true,
@@ -87,7 +87,7 @@ function GetAllServerMaps()
         local meta = GetResourceMetadata(resName, "this_is_a_map", 0)
         
         if meta and isResourcePresentProvideless(resName) then
-            if ValidMapData[resName:lower()] then
+            if MapCreatorValidResources[resName:lower()] then
                 table.insert(maps, { value = resName })
             end
         end

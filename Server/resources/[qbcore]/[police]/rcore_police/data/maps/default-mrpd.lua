@@ -21,7 +21,7 @@ CreateThread(function()
 			scale   = 1.0,
 			color   = 29
         },
-        Pos = vec3(441.371, -981.135, 30.689),
+        Pos = vec3(445.01,-980.62,30.72),
         Zones = {
             {
                 label = _U('ZONES_LABELS.DUTY'),

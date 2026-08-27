@@ -24,7 +24,7 @@ if Config.Dispatch == Dispatch.LB_TABLET then
             priority = 'high',
             title = _U('DISPATCH.OFFICER_SENT_EMERGENCY_CALL_TITLE'),
             time = 30, -- LB Tablet usa segundos
-            job = jobName, -- LSPD ou PRPD real da Seoul
+            job = 'police', -- LB Tablet canonical dispatch channel for LSPD/PRPD
             description = dispatchMessage,
             location = {
                 label = 'Officer',

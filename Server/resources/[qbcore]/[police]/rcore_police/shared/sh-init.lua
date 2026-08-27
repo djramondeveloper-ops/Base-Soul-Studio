@@ -255,6 +255,111 @@ function isResourcePresentProvideless(resourceName)
     return false
 end
 
+-- Seoul: resolve um unico preset por MapLocation de forma deterministica.
+-- Prioridade: override explicito > resource externo iniciado > STANDALONE.
+function ResolvePoliceMapPresets()
+    local grouped = {}
+
+    for mapName, mapData in pairs(Maps or {}) do
+        local location = mapData and mapData.MapLocation
+        if location then
+            grouped[location] = grouped[location] or {}
+            table.insert(grouped[location], {
+                mapName = mapName,
+                mapData = mapData,
+            })
+        end
+    end
+
+    local selected = {}
+    for location, candidates in pairs(grouped) do
+        table.sort(candidates, function(a, b)
+            return tostring(a.mapName) < tostring(b.mapName)
+        end)
+
+        local overrideName = Config.MapPresetOverrides and Config.MapPresetOverrides[location]
+        if overrideName and Maps[overrideName] and Maps[overrideName].MapLocation == location then
+            selected[location] = {
+                mapName = overrideName,
+                mapData = Maps[overrideName],
+                reason = 'override',
+            }
+        else
+            -- External resources first.
+            for _, candidate in ipairs(candidates) do
+                local resourceName = candidate.mapData.Resource
+                if resourceName and resourceName ~= MAPS.STANDALONE and isResourcePresentProvideless(resourceName) then
+                    selected[location] = {
+                        mapName = candidate.mapName,
+                        mapData = candidate.mapData,
+                        reason = 'external',
+                    }
+                    break
+                end
+            end
+
+            -- Per-location standalone fallback. One external map elsewhere no longer disables it.
+            if not selected[location] then
+                for _, candidate in ipairs(candidates) do
+                    if candidate.mapData.Resource == MAPS.STANDALONE then
+                        selected[location] = {
+                            mapName = candidate.mapName,
+                            mapData = candidate.mapData,
+                            reason = 'standalone',
+                        }
+                        break
+                    end
+                end
+            end
+        end
+    end
+
+    return selected
+end
+
+function WaitForPoliceMapDefinitions(timeoutMs)
+    timeoutMs = tonumber(timeoutMs) or 5000
+    local elapsed = 0
+    local lastCount = -1
+    local stableTicks = 0
+
+    while elapsed < timeoutMs do
+        local count = 0
+        for _ in pairs(Maps or {}) do count = count + 1 end
+
+        local overridesReady = true
+        for _, presetName in pairs(Config.MapPresetOverrides or {}) do
+            if not Maps or not Maps[presetName] then
+                overridesReady = false
+                break
+            end
+        end
+
+        if count > 0 and overridesReady then
+            if count == lastCount then
+                stableTicks = stableTicks + 1
+            else
+                stableTicks = 0
+                lastCount = count
+            end
+
+            -- All map files register from CreateThread; requiring a stable count
+            -- prevents resolving while some preset threads are still pending.
+            if stableTicks >= 4 then
+                return true
+            end
+        else
+            stableTicks = 0
+            lastCount = count
+        end
+
+        Wait(50)
+        elapsed = elapsed + 50
+    end
+
+    return Maps and next(Maps) ~= nil
+end
+
 -- Find first resource whose name matches a pattern and is loaded
 function FindTargetResource(pattern)
     for i = 0, GetNumResources() - 1 do

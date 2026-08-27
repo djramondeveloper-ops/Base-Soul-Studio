@@ -766,6 +766,12 @@ Config = {
             }
         },
     },
+    -- Seoul: uma unica configuracao manual da DP.
+    -- Edite somente dp_config.lua para blip, zonas, garagem e coordenadas.
+    -- O MLO kiiya_mrpd e apenas visual e pode continuar iniciado normalmente.
+    MapPresetOverrides = {
+        [MAP_TYPES.MRPD] = 'SEOUL_DP',
+    },
     UseTargetForZones = false, -- This is used when you want to use target instead of markers for your zones.
     Stashes = {
         [ZONE_TYPE.PERSONAL_LOCKER] = {

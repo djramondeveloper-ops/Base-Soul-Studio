@@ -33,7 +33,9 @@ function Utils.CreateBlipAtCoords(blipOptions)
     SetBlipDisplay(blip, blipOptions.display or 1)
     SetBlipScale  (blip, blipOptions.scale or 1.0)
     SetBlipColour (blip, blipOptions.color or 1)
-    SetBlipAsShortRange(blip, blipOptions.shortRange or true)
+    local shortRange = blipOptions.shortRange
+    if shortRange == nil then shortRange = true end
+    SetBlipAsShortRange(blip, shortRange)
     BeginTextCommandSetBlipName('STRING')
     AddTextComponentSubstringPlayerName(blipOptions.name or '')
     EndTextCommandSetBlipName(blip)

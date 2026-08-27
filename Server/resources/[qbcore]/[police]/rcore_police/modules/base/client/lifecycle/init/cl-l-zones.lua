@@ -19,12 +19,9 @@ local ZONE_STATES = {
     }
 }
 
-local loadedMaps = {}
-local standaloneMapData = {}
 local zoneQueue = {}
 local registeredPoints = {}
 ValidMapData = {}
-local noExternalMaps = true
 
 CreateThread(function()
     TextService.Hide()
@@ -39,83 +36,66 @@ function InitRegisterZones()
     if Config.UseTargetForZones then
         Config.Zones.Style = "Target"
     end
-    
-    for mapName, mapData in pairs(Maps) do
-        local mapLocation = mapData.MapLocation
-        local resource = mapData.Resource
-        
-        if mapLocation then
-            local mapState = "UNLOADED"
-            
-            if resource ~= MAPS.STANDALONE then
-                if isResourcePresentProvideless(resource) then
-                    mapState = "LOADED"
-                    noExternalMaps = false
-                end
-            else
-                standaloneMapData = { mapName = mapName, mapLocation = mapLocation, mapState = "LOADED" }
+
+    if not WaitForPoliceMapDefinitions(5000) then
+        return dbg.critical('Map presets were not populated before zone registration timeout')
+    end
+
+    local resolvedMaps = ResolvePoliceMapPresets()
+    local sorted = {}
+    for location, entry in pairs(resolvedMaps) do
+        table.insert(sorted, { location = location, entry = entry })
+    end
+    table.sort(sorted, function(a, b)
+        return tostring(a.location) < tostring(b.location)
+    end)
+
+    for _, resolved in ipairs(sorted) do
+        local mapName = resolved.entry.mapName
+        local mapDef = resolved.entry.mapData
+
+        if mapDef then
+            local zones = mapDef.Zones
+            local jobs = mapDef.Jobs
+            local pos = mapDef.Pos
+            local blipDef = mapDef.Blip
+
+            ValidMapData[mapName] = {
+                resource = mapDef.Resource,
+                location = mapDef.MapLocation,
+                coords = pos,
+                owner = jobs,
+            }
+
+            dbg.debug('Map resolver selected %s for %s (%s)', mapName, tostring(mapDef.MapLocation), tostring(resolved.entry.reason))
+
+            if mapDef.MapLocation == MAP_TYPES.MRPD then
+                local posText = pos and ("%.3f, %.3f, %.3f"):format(pos.x, pos.y, pos.z) or "N/A"
+                print(("^2[rcore_police][Seoul]^7 SEOUL_SINGLE_DP_V5 | MRPD preset=%s | reason=%s | resource=%s | Pos=%s"):format(
+                    tostring(mapName), tostring(resolved.entry.reason), tostring(mapDef.Resource), posText
+                ))
             end
-            
-            if mapState == "LOADED" then
-                if loadedMaps[mapLocation] and loadedMaps[mapLocation].mapState == "UNLOADED" then
-                    loadedMaps[mapLocation] = { mapName = mapName, mapLocation = mapLocation, mapState = mapState }
-                end
-            elseif mapState == "UNLOADED" then
-                if not loadedMaps[mapLocation] then
-                    loadedMaps[mapLocation] = { mapName = mapName, mapLocation = mapLocation, mapState = mapState }
-                end
+
+            if blipDef and blipDef.enable and pos then
+                Utils.CreateBlipAtCoords({
+                    sprite = blipDef.sprite or 0,
+                    display = blipDef.display or 1,
+                    color = blipDef.color or 0,
+                    scale = blipDef.scale or 1.0,
+                    shortRange = blipDef.shortRange == true,
+                    name = blipDef.name or '',
+                    pos = pos,
+                })
             end
-        end
-    end
-    
-    if noExternalMaps and standaloneMapData.mapLocation then
-        loadedMaps[standaloneMapData.mapLocation] = standaloneMapData
-    end
-    
-    local sortedMaps = {}
-    for _, entry in pairs(loadedMaps) do
-        table.insert(sortedMaps, entry)
-    end
-    table.sort(sortedMaps, function(a, b) return a.mapLocation < b.mapLocation end)
-    
-    if next(sortedMaps) then
-        for _, entry in pairs(sortedMaps) do
-            local mapName = entry.mapName
-            local mapState = entry.mapState
-            local mapDef = Maps[mapName]
-            
-            if mapDef and mapState == "LOADED" then
-                local zones = mapDef.Zones
-                local jobs = mapDef.Jobs
-                local pos = mapDef.Pos
-                local blipDef = mapDef.Blip
-                
-                ValidMapData[mapName] = {
-                    resource = mapDef.Resource,
-                    location = mapDef.MapLocation,
-                    coords = pos,
-                    owner = jobs
-                }
-                
-                if blipDef and blipDef.enable then
-                    Utils.CreateBlipAtCoords({
-                        sprite = blipDef.sprite or 0,
-                        display = blipDef.display or 1,
-                        color = blipDef.color or 0,
-                        scale = blipDef.scale or 1.0,
-                        shortRange = blipDef.shortRange or false,
-                        name = blipDef.name or "",
-                        pos = pos
-                    })
-                end
-                
-                dbg.debug("Registering zones for map preset named %s", mapName)
-                if pos then BlockEnviroment(pos) end
-                
-                if zones and next(zones) then
-                    DefineZones(zones, mapName, jobs)
-                    table.insert(zoneQueue, { zones = zones, mapKey = mapName, owner = jobs })
-                end
+
+            if pos then
+                BlockEnviroment(pos)
+            end
+
+            if zones and next(zones) then
+                dbg.debug('Registering zones for map preset named %s', mapName)
+                DefineZones(zones, mapName, jobs)
+                table.insert(zoneQueue, { zones = zones, mapKey = mapName, owner = jobs })
             end
         end
     end

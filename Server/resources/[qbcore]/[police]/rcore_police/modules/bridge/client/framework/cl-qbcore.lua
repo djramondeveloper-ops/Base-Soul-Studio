@@ -9,6 +9,12 @@
 
 
 CreateThread(function()
+    -- Seoul: client services are declared later in fxmanifest than framework bridges.
+    -- Wait explicitly so this bridge cannot die on a NetworkService init race.
+    while not NetworkService or type(NetworkService.RegisterNetEvent) ~= 'function' do
+        Wait(0)
+    end
+
     local RanksAsBossList = Config.RanksAsBossList or {
         ['boss'] = true,
         ['chief'] = true,

@@ -102,7 +102,7 @@ CreateThread(function()
             scale = 1.0,
         },
         Resource = "kiiya_mrpd",
-        MapLocation = "ATLEESTREET_LITTLEBIGHORNAVENUE",
+        MapLocation = MAP_TYPES.MRPD,
         Jobs = "LSPD",
     }
 end)

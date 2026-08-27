@@ -31,6 +31,7 @@ shared_scripts {
     'config.lua',
     'config_private.lua',
     'shared/sh-init.lua',
+    'dp_config.lua',
     'shared/sh-api.lua',
     'modules/bridge/shared/*.lua',
 }

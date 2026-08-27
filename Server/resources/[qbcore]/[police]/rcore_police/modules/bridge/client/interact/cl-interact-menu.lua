@@ -107,6 +107,13 @@ AddEventHandler('rcore_police:client:menuInteract', function(session, invokingRe
             end
         end
     end
+    -- Emergency is a self-originated police action and does not require a target entity.
+    -- Route it before the generic target validation below.
+    if action == MENU_ACTIONS.EMERGENCY then
+        TriggerServerEvent('rcore_police:server:requestMenuInteract', action, nil, actionType, data)
+        return
+    end
+
     local targetPed = UtilsService.GetPlayerPedFromServerId(value)
     local isCuffed = targetPed and IsPedCuffed(targetPed)
     local isHandsUp = GetHandsUPState(value)

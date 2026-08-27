@@ -157,7 +157,7 @@ RegisterCommand("rcore_police_debug_access", function()
         isJobAllowed = jobName == deptOwner
     end
 
-    local hasAccess, accessStatus = Utils.HasZoneAccess(job, dutyState, zoneType, jobState)
+    local hasAccess, accessStatus = Utils.HasZoneAccess(deptOwner, dutyState, zoneType, jobState)
 
     -- Format zone owner display
     local ownerDisplay
@@ -177,4 +177,23 @@ RegisterCommand("rcore_police_debug_access", function()
     print(("Is Job Allowed:   %s"):format(tostring(isJobAllowed)))
     print(("Has Zone Access:  %s (Status: %s)"):format(tostring(hasAccess), tostring(accessStatus)))
     print("================================")
+end, false)
+
+
+RegisterCommand("rcore_police_map_debug", function()
+    print("========== RCORE POLICE / SEOUL MAP DEBUG ==========")
+    print("Resolver: SEOUL_SINGLE_DP_V5")
+    local found = false
+    for mapName, mapData in pairs(ValidMapData or {}) do
+        if type(mapData) == 'table' and mapData.location then
+            found = true
+            local coords = mapData.coords
+            local posText = coords and ("%.3f, %.3f, %.3f"):format(coords.x, coords.y, coords.z) or "N/A"
+            print(("preset=%s | location=%s | resource=%s | pos=%s"):format(
+                tostring(mapName), tostring(mapData.location), tostring(mapData.resource), posText
+            ))
+        end
+    end
+    if not found then print("NENHUM PRESET ATIVO EM ValidMapData") end
+    print("====================================================")
 end, false)
