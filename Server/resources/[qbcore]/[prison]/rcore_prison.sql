@@ -1,0 +1,13 @@
+-- rcore_prison 2.2.8 - estrutura usada pela versão enviada
+-- O próprio resource também cria estas tabelas automaticamente via oxmysql.
+
+CREATE TABLE IF NOT EXISTS `rcore_prison` (
+ `prisoner_id` INT(11) NOT NULL AUTO_INCREMENT, `owner` VARCHAR(80) NULL DEFAULT NULL, `solitary_time` DATETIME NULL DEFAULT NULL, `jail_time` DATETIME NULL DEFAULT NULL, `data` LONGTEXT NULL DEFAULT NULL, `createdAt` TIMESTAMP NULL DEFAULT current_timestamp(), `updatedAt` TIMESTAMP NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(), PRIMARY KEY (`prisoner_id`), INDEX `owner` (`owner`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `rcore_prison_accounts` (`account_id` INT(11) NOT NULL AUTO_INCREMENT,`owner` VARCHAR(80) NULL DEFAULT NULL,`balance` BIGINT(20) NULL DEFAULT '0',`giftstate` TINYINT(4) NULL DEFAULT '0',`createdAt` TIMESTAMP NULL DEFAULT current_timestamp(),`updatedAt` TIMESTAMP NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),PRIMARY KEY (`account_id`),INDEX `owner` (`owner`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS `rcore_prison_coms_sessions` (`zoneId` BIGINT(10) NOT NULL,`verticesTarget` BIGINT(10) NOT NULL,`verticesDone` BIGINT(10) NOT NULL DEFAULT '0',PRIMARY KEY (`zoneId`),INDEX `zoneId_index` (`zoneId`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS `rcore_prison_coms` (`id` INT(11) NOT NULL AUTO_INCREMENT,`owner` VARCHAR(80) NULL DEFAULT NULL,`zoneId` BIGINT(10) NULL DEFAULT NULL,`state` ENUM('IDLE','SWEEPING','RETURN') NOT NULL,`perollAmount` INT(10) NULL DEFAULT '0',`perollTarget` INT(10) NULL DEFAULT '0',`createdAt` TIMESTAMP NULL DEFAULT current_timestamp(),`name` VARCHAR(60) NOT NULL,PRIMARY KEY (`id`),INDEX `owner` (`owner`),INDEX `zoneId` (`zoneId`),CONSTRAINT `FK_Q27L` FOREIGN KEY (`zoneId`) REFERENCES `rcore_prison_coms_sessions` (`zoneId`) ON UPDATE RESTRICT ON DELETE SET NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS `rcore_prison_stash` (`owner` VARCHAR(255) NOT NULL,`stash` LONGTEXT NOT NULL,PRIMARY KEY (`owner`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS `rcore_prison_logs` (`id` INT(11) NOT NULL AUTO_INCREMENT,`action` VARCHAR(50) NULL,`desc` VARCHAR(255) NULL,`charId` VARCHAR(70) NULL,`officer_name` VARCHAR(70) NULL,`citizen_name` VARCHAR(70) NULL,`created_at` DATETIME NOT NULL DEFAULT current_timestamp(),PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS `rcore_prison_accounts_log` (`id` INT(11) NOT NULL AUTO_INCREMENT,`action` VARCHAR(50) NULL,`desc` VARCHAR(300) NULL,`charId` VARCHAR(50) NULL,`amount` INT(11) NULL,`created_at` DATETIME NULL,PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

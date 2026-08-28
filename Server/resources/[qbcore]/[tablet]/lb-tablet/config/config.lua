@@ -43,7 +43,7 @@ Config.BillingScript = "framework" --[[
 Config.RegistrationApp = false -- personagens gerenciados pela vRP
 
 Config.HousingScript = false -- esta versão não possui bridge para qbx_properties
-Config.JailScript = "vrp" -- prisão nativa da vRP
+Config.JailScript = "rcore" -- Seoul: rcore_prison
 --[[
     Supported jail scripts:
         * auto: automatically detect the jail script (recommended)

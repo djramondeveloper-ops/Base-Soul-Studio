@@ -684,6 +684,15 @@ function Creative.EscalatedOperation(Identifier, Mode, Passport)
   return true
 end
 
+
+local function SeoulRcorePrisonMinutes(Passport)
+  local Seconds = exports.oxmysql:scalar_async(
+    "SELECT GREATEST(TIMESTAMPDIFF(SECOND, NOW(), jail_time), 0) FROM rcore_prison WHERE owner = ? ORDER BY prisoner_id DESC LIMIT 1",
+    { tostring(Passport) }
+  )
+  return math.ceil((tonumber(Seconds) or 0) / 60)
+end
+
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ARRESTRECORDS
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -744,18 +753,18 @@ function Creative.Arrest(Data)
 
   if Arrest then
     if Services > 0 then
-      vRP.InsertPrison(Passport, Services)
-
       local Target = vRP.Source(Passport)
-      if Target then
-        vRP.Teleport(Target, PrisonInside)
-        Player(Target)["state"]["Prison"] = true
-
-        TriggerClientEvent("Notify", Target, "Boolingbroke",
-          "Todas as lixeiras do pátio estão disponíveis para <b>vasculhar</b> em troca de redução penal.", "amarelo",
-          30000)
+      if not Target then
+        TriggerClientEvent("mdt:Notify", source, "Erro", "O cidadão precisa estar online para ser preso pelo rcore_prison.", "vermelho")
+        return false
       end
 
+      if GetResourceState("rcore_prison") ~= "started" then
+        TriggerClientEvent("mdt:Notify", source, "Erro", "rcore_prison não está iniciado.", "vermelho")
+        return false
+      end
+
+      exports.rcore_prison:Jail(Target, Services, Description or "Prisão via MDT", source)
       TriggerClientEvent("mdt:Notify", source, "Sucesso", "Prisão efetuada com sucesso.", "verde")
     else
       TriggerClientEvent("mdt:Notify", source, "Sucesso", "Multa aplicada com sucesso.", "verde")
@@ -1023,7 +1032,7 @@ function Creative.GetWanted(Id)
     return false
   end
 
-  return { Id = Wanted.id, Citizen = { Passport = Wanted.Passport, Name = vRP.FullName(Wanted.Passport), Services = vRP.Identity(Wanted.Passport).Prison }, Date =
+  return { Id = Wanted.id, Citizen = { Passport = Wanted.Passport, Name = vRP.FullName(Wanted.Passport), Services = SeoulRcorePrisonMinutes(Wanted.Passport) }, Date =
   Wanted.Timestamp, Image = Wanted.Image, Description = Wanted.Description, Accusations = Wanted.Accusations, Officer = { Passport = Wanted.Officer, Name = vRP.FullName(Wanted.Officer) }, HowLong =
   Wanted.HowLong, CreatedAt = Wanted.Timestamp }
 end
@@ -1134,8 +1143,9 @@ AddEventHandler("mdt:Vehicle", function(Entity)
   local Service = vRP.HasService(Passport, "Police")
 
   if not Permission[Passport] then
-    for Group in pairs(Groups.Police?.Permission) do
-      if Player(source).state?[Group] then
+    local PolicePermissions = Groups.Police and Groups.Police.Permission or {}
+    for Group in pairs(PolicePermissions) do
+      if Player(source).state[Group] then
         Permission[Passport] = Group
         break
       end

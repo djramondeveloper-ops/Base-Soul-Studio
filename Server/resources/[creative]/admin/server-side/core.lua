@@ -669,7 +669,20 @@ RegisterCommand("cleanprison",function(source)
 		return false
 	end
 
-	vRP.CleanPrison(OtherPassport)
+	local OtherSource = vRP.Source(OtherPassport)
+	if GetResourceState("rcore_prison") ~= "started" then
+		TriggerClientEvent("Notify",source,"Aviso","rcore_prison não está iniciado.","vermelho",5000)
+		return false
+	end
+
+	if OtherSource then
+		exports.rcore_prison:Unjail(OtherSource)
+	else
+		exports.rcore_prison:UnjailOffline(tostring(OtherPassport))
+	end
+
+	-- limpa somente o campo legado para não reativar state.Prison no próximo login
+	vRP.CleanPrison(OtherPassport,true)
 	exports.discord:Embed("CleanPrison",("**[ADMIN]:** %s\n**[PASSAPORTE]:** %s"):format(Passport,OtherPassport))
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

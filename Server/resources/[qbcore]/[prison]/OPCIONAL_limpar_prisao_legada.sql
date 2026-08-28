@@ -1,0 +1,2 @@
+-- Execute SOMENTE depois de confirmar que não existem penas antigas a migrar.
+-- UPDATE characters SET Prison = 0;
