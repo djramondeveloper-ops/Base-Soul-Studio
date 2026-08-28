@@ -215,10 +215,15 @@ RegisterCommand("PlayerFunctions",function()
 				--	exports.dynamic:AddMenu("Computador","Abrir o software dos grupos.","painel")
 				end
 
-				local Events = { LSPD = "mdt:Open", PRPD = "mdt:Open", Paramedic = "ems:Open" }
-				local Event = Events[Permission] or "painel:Open"
+				if Permission == "LSPD" or Permission == "PRPD" then
+					-- LB Tablet oficial da Seoul: evento client real registrado pelo lb-tablet.
+					exports.dynamic:AddButton(v.Name or Permission,"Abrir o MDT no LB Tablet.","tablet:toggleOpen",true,"painel",false)
+				else
+					local Events = { Paramedic = "ems:Open" }
+					local Event = Events[Permission] or "painel:Open"
 
-				exports.dynamic:AddButton(v.Name or Permission,"Painel de Controle do usuário.",Event,Permission,"painel",true)
+					exports.dynamic:AddButton(v.Name or Permission,"Painel de Controle do usuário.",Event,Permission,"painel",true)
+				end
 
 				Painels = Painels + 1
 			end
