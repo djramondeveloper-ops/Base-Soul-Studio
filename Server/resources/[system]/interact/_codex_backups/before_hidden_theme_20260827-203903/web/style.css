@@ -28,10 +28,6 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 2rem;
-  height: 2.1rem;
-  background-color: var(--theme-color);
-  -webkit-mask: url("./assets/hidden.svg") center / contain no-repeat;
-  mask: url("./assets/hidden.svg") center / contain no-repeat;
 }
 
 #container {

@@ -60,11 +60,6 @@ RegisterNetEvent('mri_Qadmin:seoul:requestOpenFromTablet', function()
         notifyDenied(src)
         return
     end
-
-    -- The tablet can open before the Qadmin ACE/principal cache finishes syncing.
-    -- Reload the player's principals first so setupUI receives page/action perms.
-    TriggerEvent('mri_Qadmin:server:Reload', src)
-    Wait(250)
     TriggerClientEvent('mri_Qadmin:client:SetupPanel', src)
 end)
 

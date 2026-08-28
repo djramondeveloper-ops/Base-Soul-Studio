@@ -45,6 +45,7 @@ local function requestSetup()
     sendToApp('setVisible', true)
     loadTranslations()
     TriggerServerEvent('mri_Qadmin:seoul:requestOpenFromTablet')
+    TriggerEvent('mri_Qadmin:client:SetupPanel')
 end
 
 local function removeApp()

@@ -37,21 +37,21 @@
             "id": "system"
         }
     ],
-    "ResourceMode": "blacklist",
-    "DBEnabled": true,
-    "ResourceEntries": [],
-    "MaxMemory": 500,
     "Webhooks": {
-        "server": "",
-        "permissions": "",
-        "Fallback": "",
-        "players": "",
-        "bans": "",
         "chat": "",
         "vehicles": "",
+        "server": "",
+        "players": "",
+        "inventory": "",
+        "bans": "",
+        "permissions": "",
         "money": "",
-        "system": "",
-        "inventory": ""
+        "Fallback": "",
+        "system": ""
     },
+    "ResourceMode": "blacklist",
+    "ResourceEntries": [],
+    "MaxMemory": 500,
+    "DBEnabled": true,
     "ForwardEvent": ""
 }

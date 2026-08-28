@@ -15,15 +15,6 @@ function dui.register()
     )
 end
 
-function dui.sendMessage(action, value)
-    if not dui.instance then return end
-
-    dui.instance:sendMessage({
-        action = action,
-        value = value
-    })
-end
-
 dui.register()
 
 return dui

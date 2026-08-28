@@ -614,34 +614,3 @@ Como testar:
 Observacao tecnica:
 
 Esta entrega nao converteu o script para QBCore puro nem alterou NUI. A correcao preserva o contrato Seoul/vRP com adapter QBCore.
-
-## Correcao Seoul Tablet - 2026-08-27
-
-Problema corrigido:
-
-- Ao abrir o Seoul Admin pelo tablet, a lateral podia aparecer sem opcoes ate reiniciar `mri_Qadmin`.
-
-Causa:
-
-- O client do tablet chamava `mri_Qadmin:client:SetupPanel` localmente ao mesmo tempo em que pedia autorizacao ao servidor. Em alguns loads isso fazia o `setupUI` chegar antes de `SetupPlayerPrincipals` terminar de reaplicar as permissoes `qadmin.*` do jogador.
-
-Arquivos alterados nesta correcao:
-
-- `client/seoul_tablet_app.lua`
-- `server/seoul_admin_bridge.lua`
-
-O que foi ajustado:
-
-- O tablet agora apenas solicita abertura ao servidor.
-- O servidor valida o grupo Admin, recarrega os principals/permissoes do jogador com `mri_Qadmin:server:Reload`, aguarda um curto intervalo e so entao envia `mri_Qadmin:client:SetupPanel`.
-
-Como testar:
-
-1. Reinicie `mri_Qadmin`.
-2. Entre com um personagem do grupo `Admin`.
-3. Abra o Seoul Admin pelo tablet sem reiniciar o resource depois do login.
-4. Confirme que as opcoes laterais aparecem na primeira abertura.
-
-Backup desta correcao:
-
-- `_codex_backups/before_tablet_setup_sync_20260827-205849`

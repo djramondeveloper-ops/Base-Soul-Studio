@@ -63,7 +63,6 @@ local function applySeoulInteractTheme(theme, basics)
     config.themeColor = color
     r, g, b, a = table.unpack(color)
     dui.sendMessage('setColor', color)
-    hidden.sendMessage('setColor', color)
 end
 
 RegisterNetEvent('Seoul:ThemeUpdated', function(theme)

@@ -4,6 +4,18 @@
      <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <img id="hidden-icon" src="./assets/hidden.svg" />
+    <div id="hidden-icon"></div>
+    <script>
+      window.addEventListener("message", (event) => {
+        if (event.data.action !== "setColor") return;
+
+        const c = event.data.value;
+        const color = `rgb(${c[0]}, ${c[1]}, ${c[2]}, ${c[3] / 255})`;
+        const softColor = `rgb(${c[0]}, ${c[1]}, ${c[2]}, 0.35)`;
+
+        document.body.style.setProperty("--theme-color", color);
+        document.body.style.setProperty("--theme-color-soft", softColor);
+      });
+    </script>
   </body>
 </html>
