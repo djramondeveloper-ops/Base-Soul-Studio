@@ -223,6 +223,10 @@ local function resolveInventoryException(selectedInventory)
   local resolvedInventory = selectedInventory
   local detectedException = nil
 
+  if selectedInventory ~= AUTO_DETECT and selectedInventory ~= Inventories.CHEEZA then
+    return selectedInventory
+  end
+
   if isResourcePresentProvideless(Inventories.CHEEZA) then
     detectedException = Inventories.CHEEZA
   end

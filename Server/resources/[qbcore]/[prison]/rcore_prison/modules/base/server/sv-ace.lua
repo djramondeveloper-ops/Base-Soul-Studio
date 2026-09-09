@@ -29,6 +29,10 @@ function Ace.CanGroup(principal, permission)
 end
 
 local function validateAcePermissions()
+    if Config.Framework ~= Framework.NONE then
+        return
+    end
+
     local allValid = true
 
     for principal, permissions in pairs(PermissionMap) do
