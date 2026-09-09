@@ -37,6 +37,10 @@ function HandleSpawnVehicle(coords, model)
         TriggerServerEvent('rcore_police:server:registerVehicle', netId)
     end
     if vehicle then
+        TextService.Hide()
+        UI.HelpKeys(nil, false)
+        GlobalZoneId = nil
+        CurrentZone = nil
         AddVehicleKey(vehicle)
         SetVehicleFuel(vehicle)
         HandleVehicleSpawnExtras(vehicle)

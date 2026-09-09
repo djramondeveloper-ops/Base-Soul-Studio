@@ -17,6 +17,10 @@ Citizen.CreateThread(function()
             if #(coords - zone.position) < 100 then
                 RenderedZones[zone.id] = zone
             else
+                if zone.isIn then
+                    if zone.onLeave then pcall(zone.onLeave) end
+                    zone.isIn = false
+                end
                 zone.rendering = false
                 RenderedZones[zone.id] = nil
             end
@@ -93,6 +97,10 @@ Citizen.CreateThread(function()
                     end
                 end
             else
+                if zone.isIn then
+                    if zone.onLeave then pcall(zone.onLeave) end
+                    zone.isIn = false
+                end
                 zone.rendering = false
                 if dist >= zone.npcRenderDistance then zone.unloadZoneNPC() end
                 if zone.isPropZone and zone.propZoneLodDistance and dist >= zone.propZoneLodDistance then

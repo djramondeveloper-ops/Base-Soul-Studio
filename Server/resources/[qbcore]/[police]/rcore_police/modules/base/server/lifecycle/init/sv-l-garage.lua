@@ -6,6 +6,56 @@
 
 local ActiveVehicles = {}
 
+local function trimPlate(plate)
+    return tostring(plate or ""):gsub("^%s+", ""):gsub("%s+$", "")
+end
+
+local function playerHasSeoulVehicleKey(player, plate)
+    local items = player and player.PlayerData and player.PlayerData.items
+    if type(items) ~= "table" then
+        return false
+    end
+
+    for _, item in pairs(items) do
+        local itemName = item and (item.item or item.name)
+        if itemName and trimPlate(tostring(itemName):match("^vehiclekey%-(.+)$")) == plate then
+            return true
+        end
+    end
+
+    return false
+end
+
+local function giveSeoulVehicleKey(src, netId)
+    local entity = NetworkGetEntityFromNetworkId(netId)
+    if not entity or entity == 0 or not DoesEntityExist(entity) then
+        return false
+    end
+
+    local plate = GetVehicleNumberPlateText(entity)
+    local trimmedPlate = trimPlate(plate)
+    if trimmedPlate == "" then
+        return false
+    end
+
+    Entity(entity).state:set("Lockpick", plate, true)
+
+    if GetResourceState("ox_inventory") == "started" then
+        return true
+    end
+
+    local player = Framework.getPlayer(src)
+    if not player or not player.Functions or not player.Functions.AddItem then
+        return true
+    end
+
+    if playerHasSeoulVehicleKey(player, trimmedPlate) then
+        return true
+    end
+
+    return player.Functions.AddItem("vehiclekey-" .. trimmedPlate, 1, nil, nil, "rcore_police_garage") == true
+end
+
 AddEventHandler("rcore_police:server:databaseReady", function()
     Wait(1000)
     GarageService.RegisterInitGroups()
@@ -41,6 +91,8 @@ RegisterNetEvent("rcore_police:server:registerVehicle", function(netId)
             ActiveVehicles[netId].spawnCost
         ))
     end
+
+    giveSeoulVehicleKey(src, netId)
     
     TriggerEvent("rcore_police:server:garage:spawnedVehicle", netId, src, jobName)
 end)

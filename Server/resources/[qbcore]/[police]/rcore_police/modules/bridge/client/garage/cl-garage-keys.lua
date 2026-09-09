@@ -8,6 +8,18 @@
 
 
 
+local function markSeoulVehicleKey(vehicle)
+    local plate = GetVehicleNumberPlateText(vehicle)
+    if not plate or plate == "" then
+        return false
+    end
+
+    Entity(vehicle).state:set("Lockpick", plate, true)
+    SetVehicleHasBeenOwnedByPlayer(vehicle, true)
+    SetVehicleNeedsToBeHotwired(vehicle, false)
+    return true
+end
+
 function AddVehicleKey(vehicle)
     if not vehicle then
         return false
@@ -15,6 +27,7 @@ function AddVehicleKey(vehicle)
     if not DoesEntityExist(vehicle) then
         return false
     end
+    markSeoulVehicleKey(vehicle)
     local coords = GetEntityCoords(vehicle)
     local plate = GetVehicleNumberPlateText(vehicle)
     local model = GetEntityModel(vehicle)
