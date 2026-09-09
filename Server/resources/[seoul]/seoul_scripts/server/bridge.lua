@@ -45,6 +45,11 @@ function SeoulScriptsServer.HasPermission(passport, permissions)
     for _,permission in ipairs(permissions or {}) do
         local ok, result = pcall(vRP.HasPermission, passport, permission)
         if ok and result then return true end
+
+        if vRP.HasGroup then
+            ok, result = pcall(vRP.HasGroup, passport, permission)
+            if ok and result then return true end
+        end
     end
     return false
 end

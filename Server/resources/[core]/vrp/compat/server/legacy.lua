@@ -158,11 +158,55 @@ function vRP.tryChestItem(user_id, chest, item, amount, slot, target) return vRP
 function vRP.updateChest(user_id, chest, slot, target, amount) return vRP.UpdateChest(user_id, chest, slot, target, amount, true) end
 
 -- Groups aliases
-function vRP.hasPermission(user_id, permission, level) return vRP.HasPermission(parseInt(user_id), permission, level) end
+local LegacyPermissionAliases = {
+    ["policia.permissao"] = { group = "Police" },
+    ["policiatiros.permissao"] = { group = "Police" },
+    ["police.permissao"] = { group = "Police" },
+    ["paramedico.permissao"] = { group = "Paramedic" },
+    ["mecanico.permissao"] = { group = "Mechanic" }
+}
+
+local function resolveLegacyPermission(permission, level)
+    local alias = LegacyPermissionAliases[tostring(permission or "")]
+    if alias then
+        return alias.group, level or alias.level
+    end
+
+    return permission, level
+end
+
+function vRP.hasPermission(user_id, permission, level)
+    local group,resolvedLevel = resolveLegacyPermission(permission, level)
+    local passport = parseInt(user_id)
+    local direct = vRP.HasPermission(passport, group, resolvedLevel)
+
+    if direct then
+        return direct
+    end
+
+    if vRP.HasGroup then
+        return vRP.HasGroup(passport, group, resolvedLevel)
+    end
+
+    return false
+end
 function vRP.addUserGroup(user_id, group, level) return vRP.SetPermission(parseInt(user_id), group, level or 1) end
 function vRP.removeUserGroup(user_id, group) return vRP.RemovePermission(parseInt(user_id), group) end
 function vRP.getUserGroups(user_id) return vRP.UserGroups(parseInt(user_id)) end
-function vRP.numPermission(permission) return vRP.NumPermission(permission) end
+function vRP.numPermission(permission)
+    local group = resolveLegacyPermission(permission)
+    return vRP.NumPermission(group)
+end
+function vRP.getUsersByPermission(permission)
+    local group = resolveLegacyPermission(permission)
+    local users = {}
+
+    for passport in pairs(vRP.NumPermission(group) or {}) do
+        users[#users + 1] = parseInt(passport)
+    end
+
+    return users
+end
 function vRP.getUserGroupByType(user_id, groupType)
     local userGroups = vRP.UserGroups(parseInt(user_id)) or {}
     for group, level in pairs(userGroups) do

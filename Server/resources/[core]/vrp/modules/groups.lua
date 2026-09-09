@@ -521,6 +521,7 @@ function vRP.SetPermission(Passport,Permission,Level,Mode)
 
 		vRP.ServiceEnter(vRP.Source(Passport),Passport,Permission,true)
 		vRP.SetSrvData("Permissions:"..Permission,Consult,true)
+		TriggerEvent("Seoul:PermissionsChanged",Passport,Permission)
 	end
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -541,6 +542,7 @@ function vRP.RemovePermission(Passport,Permission)
 			Consult[Passport] = nil
 			vRP.ServiceLeave(source,Passport,Permission,true)
 			vRP.SetSrvData("Permissions:"..Permission,Consult,true)
+			TriggerEvent("Seoul:PermissionsChanged",Passport,Permission)
 		end
 	end
 end

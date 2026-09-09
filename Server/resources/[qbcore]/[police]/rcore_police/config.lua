@@ -1186,3 +1186,39 @@ Config.ChatSuggestions = {
         { name = _U('SUGGESTIONS.KEY_NUMBER'), help = _U('SUGGESTIONS.HELP_LICENCE') },
     }
 }
+
+local SeoulPoliceDepartments = {
+    PMRJ = "Policia Militar RJ",
+    PCRJ = "Policia Civil RJ",
+    PFRJ = "Policia Federal RJ",
+    EXERCITORJ = "Exercito RJ",
+    BOMBEIRORJ = "Bombeiro RJ",
+    PMESP = "Policia Militar SP",
+    PCSP = "Policia Civil SP",
+    PFSP = "Policia Federal SP",
+    EXERCITOSP = "Exercito SP",
+    BOMBEIROSP = "Bombeiro SP"
+}
+
+local function SeoulCloneConfig(value)
+    if type(value) ~= "table" then
+        return value
+    end
+
+    local clone = {}
+    for key,item in pairs(value) do
+        clone[key] = SeoulCloneConfig(item)
+    end
+
+    return clone
+end
+
+if Config and Config.JobGroups then
+    local template = Config.JobGroups.LSPD or Config.JobGroups.PRPD
+
+    if template then
+        for job in pairs(SeoulPoliceDepartments) do
+            Config.JobGroups[job] = Config.JobGroups[job] or SeoulCloneConfig(template)
+        end
+    end
+end

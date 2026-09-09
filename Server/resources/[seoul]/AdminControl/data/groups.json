@@ -33,5 +33,294 @@
         ],
         "Type": "job",
         "Markers": false
+    },
+    "Favela1": {
+        "Name": "Favela1",
+        "Hierarchy": [
+            { "Permission": [ "favela1lider.permissao" ], "Leader": true, "Group": "Favela1", "Title": "Lider" },
+            { "Permission": [], "Group": "Favela1", "Title": "SubLider" },
+            { "Permission": [], "Group": "Favela1", "Title": "Gerente" },
+            { "Permission": [], "Group": "Favela1", "Title": "Membro" },
+            { "Permission": [], "Group": "Favela1", "Title": "Recruta" }
+        ],
+        "Permission": [ "Favela1" ],
+        "Permissions": [ "favela1.permissao" ],
+        "Service": true,
+        "OrgPanel": true,
+        "Kind": "gang",
+        "Type": "job",
+        "Markers": false
+    },
+    "Favela2": {
+        "Name": "Favela2",
+        "Hierarchy": [
+            { "Permission": [ "favela2lider.permissao" ], "Leader": true, "Group": "Favela2", "Title": "Lider" },
+            { "Permission": [], "Group": "Favela2", "Title": "SubLider" },
+            { "Permission": [], "Group": "Favela2", "Title": "Gerente" },
+            { "Permission": [], "Group": "Favela2", "Title": "Membro" },
+            { "Permission": [], "Group": "Favela2", "Title": "Recruta" }
+        ],
+        "Permission": [ "Favela2" ],
+        "Permissions": [ "favela2.permissao" ],
+        "Service": true,
+        "OrgPanel": true,
+        "Kind": "gang",
+        "Type": "job",
+        "Markers": false
+    },
+    "Favela3": {
+        "Name": "Favela3",
+        "Hierarchy": [
+            { "Permission": [ "favela3lider.permissao" ], "Leader": true, "Group": "Favela3", "Title": "Lider" },
+            { "Permission": [], "Group": "Favela3", "Title": "SubLider" },
+            { "Permission": [], "Group": "Favela3", "Title": "Gerente" },
+            { "Permission": [], "Group": "Favela3", "Title": "Membro" },
+            { "Permission": [], "Group": "Favela3", "Title": "Recruta" }
+        ],
+        "Permission": [ "Favela3" ],
+        "Permissions": [ "favela3.permissao" ],
+        "Service": true,
+        "OrgPanel": true,
+        "Kind": "gang",
+        "Type": "job",
+        "Markers": false
+    },
+    "Favela4": {
+        "Name": "Favela4",
+        "Hierarchy": [
+            { "Permission": [ "favela4lider.permissao" ], "Leader": true, "Group": "Favela4", "Title": "Lider" },
+            { "Permission": [], "Group": "Favela4", "Title": "SubLider" },
+            { "Permission": [], "Group": "Favela4", "Title": "Gerente" },
+            { "Permission": [], "Group": "Favela4", "Title": "Membro" },
+            { "Permission": [], "Group": "Favela4", "Title": "Recruta" }
+        ],
+        "Permission": [ "Favela4" ],
+        "Permissions": [ "favela4.permissao" ],
+        "Service": true,
+        "OrgPanel": true,
+        "Kind": "gang",
+        "Type": "job",
+        "Markers": false
+    },
+    "Favela5": {
+        "Name": "Favela5",
+        "Hierarchy": [
+            { "Permission": [ "favela5lider.permissao" ], "Leader": true, "Group": "Favela5", "Title": "Lider" },
+            { "Permission": [], "Group": "Favela5", "Title": "SubLider" },
+            { "Permission": [], "Group": "Favela5", "Title": "Gerente" },
+            { "Permission": [], "Group": "Favela5", "Title": "Membro" },
+            { "Permission": [], "Group": "Favela5", "Title": "Recruta" }
+        ],
+        "Permission": [ "Favela5" ],
+        "Permissions": [ "favela5.permissao" ],
+        "Service": true,
+        "OrgPanel": true,
+        "Kind": "gang",
+        "Type": "job",
+        "Markers": false
+    },
+    "Favela6": {
+        "Name": "Favela6",
+        "Hierarchy": [
+            { "Permission": [ "favela6lider.permissao" ], "Leader": true, "Group": "Favela6", "Title": "Lider" },
+            { "Permission": [], "Group": "Favela6", "Title": "SubLider" },
+            { "Permission": [], "Group": "Favela6", "Title": "Gerente" },
+            { "Permission": [], "Group": "Favela6", "Title": "Membro" },
+            { "Permission": [], "Group": "Favela6", "Title": "Recruta" }
+        ],
+        "Permission": [ "Favela6" ],
+        "Permissions": [ "favela6.permissao" ],
+        "Service": true,
+        "OrgPanel": true,
+        "Kind": "gang",
+        "Type": "job",
+        "Markers": false
+    },
+    "Favela7": {
+        "Name": "Favela7",
+        "Hierarchy": [
+            { "Permission": [ "favela7lider.permissao" ], "Leader": true, "Group": "Favela7", "Title": "Lider" },
+            { "Permission": [], "Group": "Favela7", "Title": "SubLider" },
+            { "Permission": [], "Group": "Favela7", "Title": "Gerente" },
+            { "Permission": [], "Group": "Favela7", "Title": "Membro" },
+            { "Permission": [], "Group": "Favela7", "Title": "Recruta" }
+        ],
+        "Permission": [ "Favela7" ],
+        "Permissions": [ "favela7.permissao" ],
+        "Service": true,
+        "OrgPanel": true,
+        "Kind": "gang",
+        "Type": "job",
+        "Markers": false
+    },
+    "PMRJ": {
+        "Name": "Policia Militar RJ",
+        "Hierarchy": [
+            { "Permission": [], "Leader": true, "Group": "PMRJ", "Title": "Comandante" },
+            { "Permission": [], "Group": "PMRJ", "Title": "Subcomandante" },
+            { "Permission": [], "Group": "PMRJ", "Title": "Tenente" },
+            { "Permission": [], "Group": "PMRJ", "Title": "Sargento" },
+            { "Permission": [], "Group": "PMRJ", "Title": "Soldado" }
+        ],
+        "Permission": [ "PMRJ" ],
+        "Permissions": [ "policia.permissao", "policiatiros.permissao" ],
+        "Service": true,
+        "Kind": "police",
+        "Type": "job",
+        "Markers": 26,
+        "Chat": true
+    },
+    "PCRJ": {
+        "Name": "Policia Civil RJ",
+        "Hierarchy": [
+            { "Permission": [], "Leader": true, "Group": "PCRJ", "Title": "Comandante" },
+            { "Permission": [], "Group": "PCRJ", "Title": "Subcomandante" },
+            { "Permission": [], "Group": "PCRJ", "Title": "Tenente" },
+            { "Permission": [], "Group": "PCRJ", "Title": "Sargento" },
+            { "Permission": [], "Group": "PCRJ", "Title": "Soldado" }
+        ],
+        "Permission": [ "PCRJ" ],
+        "Permissions": [ "policia.permissao", "policiatiros.permissao" ],
+        "Service": true,
+        "Kind": "police",
+        "Type": "job",
+        "Markers": 26,
+        "Chat": true
+    },
+    "PFRJ": {
+        "Name": "Policia Federal RJ",
+        "Hierarchy": [
+            { "Permission": [], "Leader": true, "Group": "PFRJ", "Title": "Comandante" },
+            { "Permission": [], "Group": "PFRJ", "Title": "Subcomandante" },
+            { "Permission": [], "Group": "PFRJ", "Title": "Tenente" },
+            { "Permission": [], "Group": "PFRJ", "Title": "Sargento" },
+            { "Permission": [], "Group": "PFRJ", "Title": "Soldado" }
+        ],
+        "Permission": [ "PFRJ" ],
+        "Permissions": [ "policia.permissao", "policiatiros.permissao" ],
+        "Service": true,
+        "Kind": "police",
+        "Type": "job",
+        "Markers": 26,
+        "Chat": true
+    },
+    "EXERCITORJ": {
+        "Name": "Exercito RJ",
+        "Hierarchy": [
+            { "Permission": [], "Leader": true, "Group": "EXERCITORJ", "Title": "Comandante" },
+            { "Permission": [], "Group": "EXERCITORJ", "Title": "Subcomandante" },
+            { "Permission": [], "Group": "EXERCITORJ", "Title": "Tenente" },
+            { "Permission": [], "Group": "EXERCITORJ", "Title": "Sargento" },
+            { "Permission": [], "Group": "EXERCITORJ", "Title": "Soldado" }
+        ],
+        "Permission": [ "EXERCITORJ" ],
+        "Permissions": [ "policia.permissao", "policiatiros.permissao" ],
+        "Service": true,
+        "Kind": "police",
+        "Type": "job",
+        "Markers": 26,
+        "Chat": true
+    },
+    "BOMBEIRORJ": {
+        "Name": "Bombeiro RJ",
+        "Hierarchy": [
+            { "Permission": [], "Leader": true, "Group": "BOMBEIRORJ", "Title": "Comandante" },
+            { "Permission": [], "Group": "BOMBEIRORJ", "Title": "Subcomandante" },
+            { "Permission": [], "Group": "BOMBEIRORJ", "Title": "Tenente" },
+            { "Permission": [], "Group": "BOMBEIRORJ", "Title": "Sargento" },
+            { "Permission": [], "Group": "BOMBEIRORJ", "Title": "Soldado" }
+        ],
+        "Permission": [ "BOMBEIRORJ" ],
+        "Permissions": [ "policia.permissao", "policiatiros.permissao" ],
+        "Service": true,
+        "Kind": "police",
+        "Type": "job",
+        "Markers": 26,
+        "Chat": true
+    },
+    "PMESP": {
+        "Name": "Policia Militar SP",
+        "Hierarchy": [
+            { "Permission": [], "Leader": true, "Group": "PMESP", "Title": "Comandante" },
+            { "Permission": [], "Group": "PMESP", "Title": "Subcomandante" },
+            { "Permission": [], "Group": "PMESP", "Title": "Tenente" },
+            { "Permission": [], "Group": "PMESP", "Title": "Sargento" },
+            { "Permission": [], "Group": "PMESP", "Title": "Soldado" }
+        ],
+        "Permission": [ "PMESP" ],
+        "Permissions": [ "policia.permissao", "policiatiros.permissao" ],
+        "Service": true,
+        "Kind": "police",
+        "Type": "job",
+        "Markers": 26,
+        "Chat": true
+    },
+    "PCSP": {
+        "Name": "Policia Civil SP",
+        "Hierarchy": [
+            { "Permission": [], "Leader": true, "Group": "PCSP", "Title": "Comandante" },
+            { "Permission": [], "Group": "PCSP", "Title": "Subcomandante" },
+            { "Permission": [], "Group": "PCSP", "Title": "Tenente" },
+            { "Permission": [], "Group": "PCSP", "Title": "Sargento" },
+            { "Permission": [], "Group": "PCSP", "Title": "Soldado" }
+        ],
+        "Permission": [ "PCSP" ],
+        "Permissions": [ "policia.permissao", "policiatiros.permissao" ],
+        "Service": true,
+        "Kind": "police",
+        "Type": "job",
+        "Markers": 26,
+        "Chat": true
+    },
+    "PFSP": {
+        "Name": "Policia Federal SP",
+        "Hierarchy": [
+            { "Permission": [], "Leader": true, "Group": "PFSP", "Title": "Comandante" },
+            { "Permission": [], "Group": "PFSP", "Title": "Subcomandante" },
+            { "Permission": [], "Group": "PFSP", "Title": "Tenente" },
+            { "Permission": [], "Group": "PFSP", "Title": "Sargento" },
+            { "Permission": [], "Group": "PFSP", "Title": "Soldado" }
+        ],
+        "Permission": [ "PFSP" ],
+        "Permissions": [ "policia.permissao", "policiatiros.permissao" ],
+        "Service": true,
+        "Kind": "police",
+        "Type": "job",
+        "Markers": 26,
+        "Chat": true
+    },
+    "EXERCITOSP": {
+        "Name": "Exercito SP",
+        "Hierarchy": [
+            { "Permission": [], "Leader": true, "Group": "EXERCITOSP", "Title": "Comandante" },
+            { "Permission": [], "Group": "EXERCITOSP", "Title": "Subcomandante" },
+            { "Permission": [], "Group": "EXERCITOSP", "Title": "Tenente" },
+            { "Permission": [], "Group": "EXERCITOSP", "Title": "Sargento" },
+            { "Permission": [], "Group": "EXERCITOSP", "Title": "Soldado" }
+        ],
+        "Permission": [ "EXERCITOSP" ],
+        "Permissions": [ "policia.permissao", "policiatiros.permissao" ],
+        "Service": true,
+        "Kind": "police",
+        "Type": "job",
+        "Markers": 26,
+        "Chat": true
+    },
+    "BOMBEIROSP": {
+        "Name": "Bombeiro SP",
+        "Hierarchy": [
+            { "Permission": [], "Leader": true, "Group": "BOMBEIROSP", "Title": "Comandante" },
+            { "Permission": [], "Group": "BOMBEIROSP", "Title": "Subcomandante" },
+            { "Permission": [], "Group": "BOMBEIROSP", "Title": "Tenente" },
+            { "Permission": [], "Group": "BOMBEIROSP", "Title": "Sargento" },
+            { "Permission": [], "Group": "BOMBEIROSP", "Title": "Soldado" }
+        ],
+        "Permission": [ "BOMBEIROSP" ],
+        "Permissions": [ "policia.permissao", "policiatiros.permissao" ],
+        "Service": true,
+        "Kind": "police",
+        "Type": "job",
+        "Markers": 26,
+        "Chat": true
     }
 }

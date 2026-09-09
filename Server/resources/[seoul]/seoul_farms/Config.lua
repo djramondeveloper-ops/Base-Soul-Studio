@@ -30,6 +30,27 @@ Farms.Permissions = {
     }
 }
 
+local function SeoulAppendUnique(list, value)
+    for _,current in ipairs(list) do
+        if current == value then
+            return
+        end
+    end
+
+    list[#list + 1] = value
+end
+
+for _,permission in ipairs({
+    "PMRJ", "PCRJ", "PFRJ", "EXERCITORJ", "BOMBEIRORJ",
+    "PMESP", "PCSP", "PFSP", "EXERCITOSP", "BOMBEIROSP"
+}) do
+    SeoulAppendUnique(Farms.Permissions.Police, permission)
+end
+
+for Index = 1,7 do
+    SeoulAppendUnique(Farms.Permissions.Gangs, "Favela"..Index)
+end
+
 
 --------##########################----------
 ------           DESMANCHE         ---------

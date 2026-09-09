@@ -999,3 +999,49 @@ NetworkedEntities = {
     ["prop_leaf_blower_01"] = true,
     ["prop_fish_slice_01"] = true,
 }
+
+local SeoulPoliceJobs = {
+    "PMRJ",
+    "PCRJ",
+    "PFRJ",
+    "EXERCITORJ",
+    "BOMBEIRORJ",
+    "PMESP",
+    "PCSP",
+    "PFSP",
+    "EXERCITOSP",
+    "BOMBEIROSP"
+}
+
+local function SeoulSetJob(list, job)
+    if type(list) == "table" then
+        list[job] = true
+    end
+end
+
+local function SeoulAppendJob(list, job)
+    if type(list) ~= "table" then
+        return
+    end
+
+    for _,current in ipairs(list) do
+        if current == job then
+            return
+        end
+    end
+
+    list[#list + 1] = job
+end
+
+for _,job in ipairs(SeoulPoliceJobs) do
+    SeoulSetJob(Config.Jobs, job)
+
+    if Config.Prisoners then
+        SeoulSetJob(Config.Prisoners.CompanionJobList, job)
+        SeoulSetJob(Config.Prisoners.RemoveJobList, job)
+    end
+
+    if Config.Escape then
+        SeoulAppendJob(Config.Escape.NotifyJobs, job)
+    end
+end

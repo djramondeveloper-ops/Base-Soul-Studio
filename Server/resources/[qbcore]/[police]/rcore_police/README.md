@@ -77,12 +77,24 @@ Os itens devem existir no `ox_inventory` e na tabela de itens da Seoul/vRP quand
 
 ## Permissoes / grupos / jobs usados
 
-A Seoul Base possui os jobs/departamentos `LSPD` e `PRPD`. O grupo `Police` existe no vRP como grupo agregador com permissao para `LSPD` e `PRPD`.
+A Seoul Base possui os jobs/departamentos `LSPD`, `PRPD`, `PMRJ`, `PCRJ`, `PFRJ`, `EXERCITORJ`, `BOMBEIRORJ`, `PMESP`, `PCSP`, `PFSP`, `EXERCITOSP` e `BOMBEIROSP`. O grupo `Police` existe no vRP como grupo agregador para todos esses departamentos.
 
 No `rcore_police`, os departamentos ativos em `Config.JobGroups` sao:
 
 - `LSPD`
 - `PRPD`
+- `PMRJ`
+- `PCRJ`
+- `PFRJ`
+- `EXERCITORJ`
+- `BOMBEIRORJ`
+- `PMESP`
+- `PCSP`
+- `PFSP`
+- `EXERCITOSP`
+- `BOMBEIROSP`
+
+Nos grupos novos, o cargo `Comandante` e o nivel 1 da vRP/Seoul. A camada QBCore da Seoul converte esse nivel para boss no formato esperado pelo `rcore_police`.
 
 ## Comandos disponiveis
 
@@ -194,7 +206,7 @@ Com `Config.UseTargetForZones = false`, o teste normal e chegar no ponto e apert
 
 ## Roteiro rapido de teste
 
-1. Entre com um personagem que tenha job/grupo `LSPD` ou `PRPD`.
+1. Entre com um personagem que tenha job/grupo `LSPD`, `PRPD` ou um dos novos grupos policiais.
 2. Va ate a coordenada de bater ponto do MLO ativo.
 3. Aperte `E` em `Bater ponto`.
 4. Abra o menu policial/radial e confirme os textos em portugues.

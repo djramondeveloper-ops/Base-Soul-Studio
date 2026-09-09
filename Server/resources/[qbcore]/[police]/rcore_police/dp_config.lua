@@ -10,7 +10,20 @@
 
 Maps['SEOUL_DP'] = {
     -- Grupo/job que pode usar esta delegacia.
-    Jobs = {'LSPD'},
+    Jobs = {
+        'LSPD',
+        'PRPD',
+        'PMRJ',
+        'PCRJ',
+        'PFRJ',
+        'EXERCITORJ',
+        'BOMBEIRORJ',
+        'PMESP',
+        'PCSP',
+        'PFSP',
+        'EXERCITOSP',
+        'BOMBEIROSP'
+    },
 
     -- Sempre carrega esta configuracao. O MLO visual e independente.
     Resource = MAPS.STANDALONE,

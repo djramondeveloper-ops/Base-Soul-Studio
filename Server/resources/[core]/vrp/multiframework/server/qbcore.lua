@@ -335,6 +335,29 @@ local function refreshPlayer(player, push)
     return player.PlayerData
 end
 
+local function refreshPassport(passport)
+    passport = tonumber(passport)
+    if not passport then return false end
+
+    local player = QBCore.PlayersByCitizenId[tostring(passport)]
+    if not player then
+        local source = sourceFromPassport(passport)
+        player = source and QBCore.Players[tonumber(source)] or nil
+    end
+
+    if not player then return false end
+
+    if player.Functions and player.Functions.UpdatePlayerData then
+        return player.Functions.UpdatePlayerData()
+    end
+
+    return refreshPlayer(player,true)
+end
+
+AddEventHandler("Seoul:PermissionsChanged",function(passport)
+    refreshPassport(passport)
+end)
+
 local function saveDatatable(passport, source)
     passport = tonumber(passport)
     if not passport then return false end

@@ -51,6 +51,8 @@ Configurados em `SeoulScripts.Permissions`:
 - Paramedic / Hospital
 - Mechanic / LSCustoms / Bennys quando usado por modulo relacionado
 
+O bridge server tambem aceita grupos agregadores via `vRP.HasGroup`, entao o agregado `Police` cobre `LSPD`, `PRPD` e os novos grupos policiais configurados no core.
+
 ## Comandos/eventos principais corrigidos
 - `tackle:Update`
 - `tackle:Player`
@@ -66,6 +68,7 @@ Configurados em `SeoulScripts.Permissions`:
 - A queda de braco bloqueia jogador em bucket diferente na mesma mesa.
 - A queda de braco limpa mesa quando jogador sai ou desconecta.
 - A queda de braco reseta estado client quando a mesa esta cheia.
+- O bridge server agora reconhece permissao por grupo agregador, mantendo compatibilidade com `Police`.
 
 ## Como testar
 1. `restart seoul_scripts`
@@ -87,6 +90,7 @@ Nao deve aparecer erro relacionado a `tackle:Player`, vetor nil, player nil ou m
 - `Tackle/server-side/server.lua`
 - `ArmBraker/client-side/client.lua`
 - `ArmBraker/server-side/server.lua`
+- `server/bridge.lua`
 - `README.md`
 
 ## Observacoes finais

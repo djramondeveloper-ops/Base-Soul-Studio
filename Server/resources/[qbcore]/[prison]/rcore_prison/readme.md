@@ -15,6 +15,7 @@ Important local fixes:
 
 - The inventory bridge now respects the manual `Inventories.OX` setting in `config.lua` and does not switch to Cheeza just because a Cheeza-compatible resource name is present.
 - ACE permission auto-registration is skipped when a framework bridge is active. This avoids `Access denied for command add_ace` without changing `server.cfg` or any base resource.
+- Police/job lists include `PMRJ`, `PCRJ`, `PFRJ`, `EXERCITORJ`, `BOMBEIRORJ`, `PMESP`, `PCSP`, `PFSP`, `EXERCITOSP` and `BOMBEIROSP`, so these groups can use prison actions and receive escape dispatch notifications like `LSPD`/`PRPD`.
 
 Install with the existing resource order and ensure the prison assets before the main prison resource:
 
@@ -55,6 +56,7 @@ How to test:
 
 Files adjusted for Seoul:
 
+- `config.lua`
 - `modules/bridge/server/sv-bridge.lua`
 - `modules/bridge/client/cl-bridge.lua`
 - `modules/base/server/sv-ace.lua`

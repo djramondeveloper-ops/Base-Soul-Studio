@@ -1199,3 +1199,44 @@ Config.VRP = {
     CompanyDataPrefix = "SeoulTablet:Company:",
     TabletItem = "lb_tablet"
 }
+
+local SeoulPoliceCompanies = {
+    { job = "PMRJ", name = "Policia Militar RJ" },
+    { job = "PCRJ", name = "Policia Civil RJ" },
+    { job = "PFRJ", name = "Policia Federal RJ" },
+    { job = "EXERCITORJ", name = "Exercito RJ" },
+    { job = "BOMBEIRORJ", name = "Bombeiro RJ" },
+    { job = "PMESP", name = "Policia Militar SP" },
+    { job = "PCSP", name = "Policia Civil SP" },
+    { job = "PFSP", name = "Policia Federal SP" },
+    { job = "EXERCITOSP", name = "Exercito SP" },
+    { job = "BOMBEIROSP", name = "Bombeiro SP" }
+}
+
+local function SeoulTabletHasCompany(job)
+    for _,company in ipairs(Config.Services.Companies or {}) do
+        if company.job == job then
+            return true
+        end
+    end
+
+    return false
+end
+
+for _,company in ipairs(SeoulPoliceCompanies) do
+    Config.VRP.Jobs[company.job] = Config.VRP.Jobs[company.job] or {
+        label = company.name,
+        bossGrade = 1
+    }
+
+    Config.Police.Permissions[company.job] = Config.Police.Permissions[company.job] or Config.Police.Permissions.LSPD
+
+    if not SeoulTabletHasCompany(company.job) then
+        Config.Services.Companies[#Config.Services.Companies + 1] = {
+            job = company.job,
+            name = company.name,
+            icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
+            canMessage = true
+        }
+    end
+end

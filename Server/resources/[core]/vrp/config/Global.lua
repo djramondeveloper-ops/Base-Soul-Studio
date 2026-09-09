@@ -412,6 +412,63 @@ Groups = {
 	}
 }
 -----------------------------------------------------------------------------------------------------------------------------------------
+-- SEOUL CUSTOM GROUPS
+-----------------------------------------------------------------------------------------------------------------------------------------
+SeoulLawGroups = SeoulLawGroups or {
+	PMRJ = "Policia Militar RJ",
+	PCRJ = "Policia Civil RJ",
+	PFRJ = "Policia Federal RJ",
+	EXERCITORJ = "Exercito RJ",
+	BOMBEIRORJ = "Bombeiro RJ",
+	PMESP = "Policia Militar SP",
+	PCSP = "Policia Civil SP",
+	PFSP = "Policia Federal SP",
+	EXERCITOSP = "Exercito SP",
+	BOMBEIROSP = "Bombeiro SP"
+}
+
+local SeoulPoliceHierarchy = { "Comandante", "Subcomandante", "Tenente", "Sargento", "Soldado" }
+local SeoulPoliceSalary = { 2500, 2250, 2000, 1750, 1500 }
+local SeoulFavelaHierarchy = { "Lider", "SubLider", "Gerente", "Membro", "Recruta" }
+
+for Group,Name in pairs(SeoulLawGroups) do
+	Groups[Group] = Groups[Group] or {
+		Permission = {
+			[Group] = true
+		},
+		Hierarchy = SeoulPoliceHierarchy,
+		Salary = SeoulPoliceSalary,
+		Name = Name,
+		SecurityCam = true,
+		Service = true,
+		Type = "Work",
+		Markers = 26,
+		Banned = true,
+		Chat = true
+	}
+
+	Groups.Police.Permission[Group] = true
+	Groups.Emergency.Permission[Group] = true
+end
+
+for Index = 1,7 do
+	local Group = "Favela"..Index
+
+	Groups[Group] = Groups[Group] or {
+		Permission = {
+			[Group] = true
+		},
+		Hierarchy = SeoulFavelaHierarchy,
+		Name = Group,
+		SecurityCam = true,
+		Domination = true,
+		Service = true,
+		Chest = true,
+		Type = "Work",
+		OrgPanel = true
+	}
+end
+-----------------------------------------------------------------------------------------------------------------------------------------
 -- CHARACTERITENS
 -----------------------------------------------------------------------------------------------------------------------------------------
 CharacterItens = { -- Itens dados ao criar personagem
@@ -618,6 +675,34 @@ Theme = { -- Configurações de tema do HUD, menus, notificações e chat
 UsingOxInventory = true -- Seoul: usa ox_inventory como inventário oficial quando o resource estiver iniciado
 SeoulCashItem = "dollar" -- item de dinheiro da Origens
 SeoulLegacyCashAliases = { dollars = "dollar", money = "dollar", cash = "dollar" }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

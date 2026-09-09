@@ -231,6 +231,7 @@ Config.PermissionAliases = {
     ["suporte.permissao"] = { group = "Admin", level = 4 },
     ["policia.permissao"] = { group = "Police" },
     ["policiatiros.permissao"] = { group = "Police" },
+    ["police.permissao"] = { group = "Police" },
     ["paramedico.permissao"] = { group = "Paramedic" },
     ["mecanico.permissao"] = { group = "Mechanic" },
     ["tratamentolivre.permissao"] = { group = "Paramedic" }
