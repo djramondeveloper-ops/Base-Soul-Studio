@@ -771,8 +771,10 @@ CreateThread(function()
 			end
 		end
 
-		for _,control in ipairs(CONTROLS) do
-			DisableControlAction(0,control,true)
+		if not IsPauseMenuActive() then
+			for _,control in ipairs(CONTROLS) do
+				DisableControlAction(0,control,true)
+			end
 		end
 
 		DisableVehicleDistantlights(true)
@@ -782,7 +784,7 @@ CreateThread(function()
 		SetCreateRandomCops(false)
 		SetPoliceRadarBlips(false)
 		DistantCopCarSirens(false)
-		SetPauseMenuActive(false)
+		-- Seoul: manter o pause nativo do GTA V ativo.
 
 		SetVehicleDensityMultiplierThisFrame(1.0)
 		SetRandomVehicleDensityMultiplierThisFrame(1.0)

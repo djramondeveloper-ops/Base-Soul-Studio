@@ -90,8 +90,8 @@ Config.SpawnUiCommand = 'dogspawn'
 Config.SpawnUiDefaultKey = 'o'
 
 -- Pet control bar (when a dog is spawned): command + default keybind (restart resource after changes)
-Config.ControlUiCommand = 'controlldog'
-Config.ControlUiDefaultKey = 'n'
+Config.ControlUiCommand = 'controlldogf2'
+Config.ControlUiDefaultKey = 'F2'
 
 -- Notifications toggle (client-side)
 -- false = disable all nn_petshop notifications
@@ -105,7 +105,7 @@ Config.Shortcuts = {
     spawnAliasDogspawn = true,  -- keep /dogspawn as alias when SpawnUiCommand is custom
     treatshopCommand = true,     -- /treatshop
     controlCommand = true,      -- /controlldog or custom ControlUiCommand
-    controlKeybind = true,      -- keybind for ControlUiCommand (default N)
+    controlKeybind = true,      -- keybind for ControlUiCommand (default F2)
     controlAliasDefault = true, -- keep /controlldog as alias when ControlUiCommand is custom
 }
 
