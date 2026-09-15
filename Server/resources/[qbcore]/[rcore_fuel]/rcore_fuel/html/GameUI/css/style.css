@@ -1,0 +1,81 @@
+/* This script was leaked inside at TCHub Website so check that out https://tchub.st/dashboard */
+
+@import url('https://fonts.googleapis.com/css?family=Press%20Start%202P:normal');
+
+* {
+	user-select: none;
+}
+
+body{
+	overflow: hidden;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.cash-container{
+    background: #ECF0F1;
+    border-radius: 32px;
+    color: #2C3E50;
+    font-size: 24px;
+    padding: 20px;
+    z-index: 100;
+    transition-duration: 1s;
+}
+
+.cash-container:hover{
+    transition-duration: 1s;
+    box-shadow: -10px -10px 30px #ffffff, 10px 10px 30px rgb(0 0 0 / 0.62);
+}
+
+.input-group-prepend {
+    display: flex;
+    flex: 1;
+}
+
+.input-group-prepend .input-group-text {
+    flex: 1;
+}
+
+#shopSettings input{
+    width: 53% !important;
+}
+
+.paymentType{
+    display: initial;
+    margin: auto;
+    height: 150px;
+    padding: 3px;
+}
+
+.payment-container {
+    background-color: #34495E;
+    border-radius: 10px;
+    padding: 20px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.payment-container:hover {
+    background-color: #1A5276;
+}
+
+.payment-container h5 {
+    margin-bottom: 10px;
+    color: #ECF0F1;
+}
+
+.payment-text {
+    color: #ECF0F1;
+    margin: 0;
+    padding-bottom: 5px;
+}
+.receipt-values { display: flex; justify-content: space-between; gap: 24px; font-variant-numeric: tabular-nums; }
+.receipt-values small { display: block; color: #b9cbd3; font-size: 13px; margin-bottom: 4px; }
+.receipt-values strong { display: block; font-size: 28px; line-height: 1.3; }
+.receipt-values strong span { font-size: 16px; }
+.checkout-totals { margin: 8px 20px; padding: 16px 0; border-bottom: 1px solid #526572; }
+.payment-choice { width: 100%; padding: 0; background: transparent; color: inherit; border: 0; cursor: pointer; }
+.payment-choice:disabled { opacity: 0.4; cursor: not-allowed; }
+.payment-choice:focus-visible { outline: 2px solid #1abc9c; outline-offset: 4px; }
+
+/* asset-rev: 5076c59ea539de616e0e398f08bab4ac */
