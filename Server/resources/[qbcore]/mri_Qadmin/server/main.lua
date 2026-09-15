@@ -1,3 +1,0 @@
-QBCore = SeoulQAdminGetCoreObject()
-
--- Callbacks
